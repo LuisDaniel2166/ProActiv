@@ -1,4 +1,4 @@
-<?php
+<?php //'hola'
 require 'app/model/db.class.php';
 require 'app/model/proyectos.class.php';
 require 'app/model/fpdf/fpdf.php';
