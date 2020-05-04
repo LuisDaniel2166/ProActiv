@@ -127,6 +127,25 @@ class mvc_controller {
     $this->view_page($pagina);
  }
 
+
+ function modificar_proyecto($idProyecto){
+  $modProy = new proyectos();
+  $seguridad = new seguridad;
+  $seguridad->set_session_form('modificar_proyecto');
+  $pagina=$this->load_template('Modificar Proyecto');
+  ob_start();
+    $tsArray = $modProy->proyUsr($_SESSION['ID_USUARIO'],'A');
+    if($tsArray!=''){
+      include 'app/views/default/modules/m.modificar_proyecto.php'; 
+      $datos = ob_get_clean();
+      $pagina = $this->replace_content('/\#CONTENIDO\#/ms' ,$datos, $pagina); 
+    }
+    else{
+      $pagina = $this->replace_content('/\#CONTENIDO\#/ms' ,'<h1>error al mostrar el proyecto</h1>' , $pagina);
+    }
+    $this->view_page($pagina);
+ }
+
  //funcion generar pdf
  function generarInforme_pdf($idProyecto=''){
   $genPDF = new proyectos();

@@ -1,4 +1,4 @@
-<div class="section bgcolor noover">
+ <div class="section bgcolor noover">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
@@ -14,7 +14,7 @@
             <div class="container">
                 <div class="row">
                     
-                    <?php //llenado de datos mediante PHP
+                    <?php //ldap_get_values_len(link_identifier, result_entry_identifier, attribute)ado de datos mediante PHP
                     foreach ($tsArray as $data): ?>
                     <div class="col-lg-4 col-md-12">
                         <div class="service-box m30">
