@@ -135,7 +135,8 @@ class mvc_controller {
   $pagina=$this->load_template('Modificar Proyecto');
   ob_start();
     $tsArray = $modProy->proyUsr($_SESSION['ID_USUARIO'],'A');
-    if($tsArray!=''){
+    $tsArray2 = $modProy->getIntPro($idProyecto);
+    if($tsArray!='' && $tsArray2!=''){
       include 'app/views/default/modules/m.modificar_proyecto.php'; 
       $datos = ob_get_clean();
       $pagina = $this->replace_content('/\#CONTENIDO\#/ms' ,$datos, $pagina); 

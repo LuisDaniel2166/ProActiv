@@ -60,7 +60,7 @@
                 <?php endforeach; ?>
             </table>
             <p><button type="submit" class="btn btn-default">Agregar actividad</button></p>
-            <p><a href="index.php?action=modProy$idProy=<?php echo $tsArray['IDPROYECTO'] ?>">><button type="submit" name="editar" class="btn btn-default" role="link" >Editar proyecto</button></a></p>            
+            <p><a href="index.php?action=modProy&idProy=<?php echo $tsArray['IDPROYECTO'] ?>">><button type="submit" name="editar" class="btn btn-default" role="link" >Editar proyecto</button></a></p>            
             <p><button type="submit" name="editar" class="btn btn-default" role="link" onclick="window.location='index.php?action=genPDF$idProy=<?php echo $tsArray['IDPROYECTO'] ?>'">Generar pdf</button></p>
                                 <!--<p><input type="date" id="start" name="trip-start" value="2018-07-22" min="2018-01-01" max="2018-12-31"></p>-->
     </div><!-- end container -->
