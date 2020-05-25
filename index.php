@@ -35,7 +35,7 @@ require 'app/model/seguridad.class.php';
  }
 
   else if ($_GET['action']=='modProy'){
-  echo "Hola";
+  
   echo $mvc->modificar_proyecto($_GET['idProy']);
  }
 

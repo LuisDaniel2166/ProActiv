@@ -66,6 +66,20 @@ class proyectos extends database{
         return $data;
         mysqli_close($link);
     }
+
+    function getIntTotal($idProyecto){
+        $link = $this->conectar();
+        $query = 'select nomusuario from usuario';
+        $result = mysqli_query($link,$query);
+        while ($tsArray = mysqli_fetch_array($result)){
+            $data[] = $tsArray;   
+        }
+        return $data;
+        mysqli_close($link);
+
+    
+        
+    }
     function getActInf($idProyecto){
         $link = $this->conectar();
         $query = "select * from actividad where IDPROYECTO=".$idProyecto;

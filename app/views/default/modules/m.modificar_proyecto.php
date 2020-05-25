@@ -15,76 +15,126 @@
                             <h3>Nombre del proyecto:</h3>
                             <input type="text" name="nombre_act" class="form-control" placeholder="Nombre de la actividad" value="Actividad 1">
                             <h3>Descripcion del proyecto:</h3>
-                            <textarea type="text" class="form-control" placeholder="Descripcion de la actividad">Descripcion de la actividad 1</textarea>
+                           - <textarea type="text" class="form-control" placeholder="Descripcion de la actividad">Descripcion de la actividad 1</textarea>
                             
+                             
+                             <form method="POST">
+                            <h3 = align="center" >Seleccionar integrantes:</h3>
 
-<?php
-    function build_table($TSarray2){
-    // start table
-    $html = '<table border =2>';
-    // header row
-    $html .= '<tr>';
-    $html .= '  <th>Nombre</th>';
-    $html .=  ' <th>AP</th>';
-    $html .=  ' <th>AM</th>';        
-    $html .= '</tr>';
+                            <?php //Función para llenar el combo                            
+                            $mysqli = new mysqli("localhost", "root", "", "proactiv");
+                            $resultset= $mysqli->query("select nomusuario from usuario");
+                            ?>
 
-    // data rows
-    foreach($TSarray2 as $datos){
-        $html .= '<tr>';
-        $html .= '<td>'  echo $datos['nomusuario']  $html .= '</td>';
-        echo $datos['apepat'];
-        $html .= '</td>';
-        echo $datos['apemat'];
-        $html .= '</td>';
-        
-        $html .= '</tr>';
-    }
+                            <div style="text-align:center;">
+                                <h5>Elige a los miembros participantes</h5>
+                            <select name="Usuarios" onChange="TextoUsuario(this);">
 
-    // finish table and return it
+                            <?php 
 
-    $html .= '</table>';
-    return $html;
-}
+                             while ($rows = $resultset->fetch_Assoc())
+                             {
+                                    $nomusuario = $rows['nomusuario'];
+                                    echo "<option value='$nomusuario'>$nomusuario</option>";              }
+                                ?> 
+                             </select>
+                             <h5>Asigna los roles correspondientes</h5>
+                             <select name="Usuarios" onChange="TextoRol(this);">
+                                 <option value="1">Encargado</option>
+                                 <option value="2">Participante</option>
 
-?>
+                             </select>
 
-                               <h3>Integrantes del proyecto:</h3>
+                            </div>
+
+                         </form>
+
+
+
+
+                              
+
+
+                            <!-- Metodo para la creación de la tabla dinámica -->
+                            <form method="POST" action="index.php">
+                                
+                                  <table>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Nombre</th>
+                                        <th>Rol</th>
+                                    </tr>
+
+                                    <tbody id="tbody"></tbody>
+                                </table>
+
+                                <p>
+                                    <button type="button" name ="button" onclick="addItem();">Añadir Miembro</button>
+                                </p>
+
                                
-<?php
-      
-        if(isset($_POST['Desplegar'])) { 
-            echo build_table($TSarray2); 
-        }         
-    ?> 
-      
-    <form method="post"> 
-        <input type="submit" name="Desplegar"
-                value="Desplegar"/> 
+                            </form>
+
+
+                            <!-- Css de la tabla dinamica -->
+                            <style type="text/css">
+                                table {
+                                    width: 100%;
+                                    border-collapse: collapse;
+                                }
+                                table tr td,
+                                table tr th {
+                                    border: 1px solid black;
+                                    padding: 25px;
+                                }
+                            </style>
+  
+                            <!-- Funcion para obtener el texto del CMB 1 -->
+                            <script>
+                                function TextoUsuario(element) {
+                                     text = element.options[element.selectedIndex].text;
+                                    // ...
+                                }
+
+
+                                function TextoRol(element) {
+                                     texto = element.options[element.selectedIndex].text;
+                                    // ...
+                                }
+                                //Funcion para crear las nuevas filas de la tabla
+                                var text  //Nombre
+                                var texto //Rol
+                                var items = 0;                              
+                                var Nombres ="";                                
+                                function addItem() {                       
 
 
 
 
+                                    items++;
 
-                            <h3>Seleccionar integrantes:</h3>
-                            <select>
-                              <option value="1">Luis Daniel Mendez Castellanos</option>
-                              <option value="2">Keiry Yoseli Rodriguez Gonzalez</option>
-                              <option value="3">Alexis Torres Acosta</option>
-                              <option value="4">Fernando Miramontes Alvarez</option>
-                              <option value="5">Omar Oswaldo Rivera Flores</option>
-                            </select>
-                            <h4>Integrantes a registrar en la actividad</h4>
-                            <h5>Marcar el checkbox para definir a los encargados del proyecto</h5>
-                            <ul>
-                                <li>Alexis Torres Acosta <input type="checkbox" id="cbox1" value="first_checkbox"></li>
-                                <li>Keiry Yoseli Rogriguez Gonzalez <input type="checkbox" id="cbox1" value="first_checkbox"></li>
+                                    var html = "<tr>";
+                                        html += "<td>" + items + "</td>";
+                                        html += "<td>"+text+"</td>";
+                                        html += "<td>"+texto+"</td>";
+                                    html += "</tr>";
+
+                                    var row = document.getElementById("tbody").insertRow();
+                                    row.innerHTML = html;
+                                }
+                            </script>
                             </ul>
                             <h4>Fecha de inicio:</h4>
                             <p><input type="date" id="start" name="trip-start" value="2019-12-02" min="2019-12-02" max="2020-12-31"></p>
                             <h4>Fecha de finalización:</h4>
                             <p><input type="date" id="start" name="trip-start" value="2019-12-02" min="2019-12-02" max="2020-12-31"></p>
-                                <p><button type="submit" class="btn btn-default" role="link" onclick="window.location='mis_actividades.html'">Editar actividad</button></p>
+                                <p><button type="submit" class="btn btn-default" role="link" onclick="window.location='mis_actividades.html'">Guardar Cambios</button></p>
+                             
+                             <p><a href="index.php?action=visualizarProyecto&idProy=<?php echo $tsArray['IDPROYECTO']?>">><button type="submit" name="editar" class="btn btn-default" role="link" onclick="'m.modificar_proyecto.php" >Cancelar</button></a></p>  
+
+
+
+
                                 <!--<p><input type="date" id="start" name="trip-start" value="2018-07-22" min="2018-01-01" max="2018-12-31"></p>-->
             </div><!-- end container -->
         </section>
