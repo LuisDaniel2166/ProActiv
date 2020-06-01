@@ -1,6 +1,7 @@
 <?php
 require 'app/model/db.class.php';
 require 'app/model/proyectos.class.php';
+require 'app/model/Usuarios.class.php';
 require 'app/model/fpdf/fpdf.php';
 session_start();
 class mvc_controller {
@@ -130,14 +131,14 @@ class mvc_controller {
 
  function modificar_proyecto($idProyecto){
   $modProy = new proyectos();
+  $usuarios = new Usuarios();
   $seguridad = new seguridad;
   $seguridad->set_session_form('modificar_proyecto');
   $pagina=$this->load_template('Modificar Proyecto');
   ob_start();
-    $tsArray = $modProy->proyUsr($_SESSION['ID_USUARIO'],'A');
-    $tsArray2 = $modProy->getIntPro($idProyecto);
-    $tsArray3 = $modProy->getIntTotal($idProyecto);
-    if($tsArray!='' && $tsArray2!=''&& $tsArray3 !=''){
+    $tsArray = $modProy->getInfPro($_SESSION['ID_USUARIO']);
+    $tsArray2 = $usuarios->Usu();
+    if($tsArray!='' && $tsArray2!=''){
       include 'app/views/default/modules/m.modificar_proyecto.php'; 
       $datos = ob_get_clean();
       $pagina = $this->replace_content('/\#CONTENIDO\#/ms' ,$datos, $pagina); 

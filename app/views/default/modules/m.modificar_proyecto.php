@@ -21,28 +21,22 @@
                              <form method="POST">
                             <h3 = align="center" >Seleccionar integrantes:</h3>
 
-                            <?php //Función para llenar el combo                            
-                            $mysqli = new mysqli("localhost", "root", "", "proactiv");
-                            $resultset= $mysqli->query("select nomusuario from usuario");
-                            ?>
+                            
 
                             <div style="text-align:center;">
                                 <h5>Elige a los miembros participantes</h5>
-                            <select name="Usuarios" onChange="TextoUsuario(this);">
-
-                            <?php 
-
-                             while ($rows = $resultset->fetch_Assoc())
-                             {
-                                    $nomusuario = $rows['nomusuario'];
-                                    echo "<option value='$nomusuario'>$nomusuario</option>";              }
-                                ?> 
+                            <select name="Usuarios" id='usuarios' onChange="TextoUsuario(this);" autofocus>
+                            
+                            <?php foreach($tsArray2 as $data): ?>
+                            <option value="<?php echo $data['IDUSUARIO'];?>"><?php echo ($data['NOMUSUARIO'].' '.$data['APEPAT'].' '.$data['APEMAT']);?></option>
+                             <?PHP endforeach;?> 
+                             <option value="0" selected>Seleccione a un usuario</option>
                              </select>
                              <h5>Asigna los roles correspondientes</h5>
-                             <select name="Usuarios" onChange="TextoRol(this);">
-                                 <option value="1">Encargado</option>
-                                 <option value="2">Participante</option>
-
+                             <select name="Usuarios" onChange="TextoRol(this);" autofocus>
+                                <option value="1">Encargado</option>
+                                <option value="2">Participante</option>
+                                <option value="0" selected>Seleccione un rol</option>
                              </select>
 
                             </div>
@@ -66,7 +60,7 @@
                                     </tr>
 
                                     <tbody id="tbody"></tbody>
-                                </table>
+                                </table>    
 
                                 <p>
                                     <button type="button" name ="button" onclick="addItem();">Añadir Miembro</button>
@@ -85,14 +79,16 @@
                                 table tr td,
                                 table tr th {
                                     border: 1px solid black;
-                                    padding: 25px;
+                                    padding: 10px;
                                 }
                             </style>
   
                             <!-- Funcion para obtener el texto del CMB 1 -->
                             <script>
-                                function TextoUsuario(element) {
+                                function TextoUsuario(element) {;
+                                     id = element.options[element.selectedIndex].text;
                                      text = element.options[element.selectedIndex].text;
+                                     
                                     // ...
                                 }
 
@@ -104,15 +100,16 @@
                                 //Funcion para crear las nuevas filas de la tabla
                                 var text  //Nombre
                                 var texto //Rol
+                                var id
+                                var sel
                                 var items = 0;                              
                                 var Nombres ="";                                
-                                function addItem() {                       
-
-
-
-
+                                function addItem() {
+                                    if (text=="undefined"){
+                                        return;
+                                    }                       
                                     items++;
-
+                                    
                                     var html = "<tr>";
                                         html += "<td>" + items + "</td>";
                                         html += "<td>"+text+"</td>";
@@ -123,6 +120,7 @@
                                     row.innerHTML = html;
                                 }
                             </script>
+
                             </ul>
                             <h4>Fecha de inicio:</h4>
                             <p><input type="date" id="start" name="trip-start" value="2019-12-02" min="2019-12-02" max="2020-12-31"></p>
