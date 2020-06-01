@@ -86,7 +86,7 @@
                             <!-- Funcion para obtener el texto del CMB 1 -->
                             <script>
                                 function TextoUsuario(element) {;
-                                     id = element.options[element.selectedIndex].text;
+                                     id =   element.options[element.selectedIndex].value;
                                      text = element.options[element.selectedIndex].text;
                                      
                                     // ...
