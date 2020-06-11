@@ -51,7 +51,7 @@
 
                             <!-- Metodo para la creación de la tabla dinámica -->
                             <form method="POST" action="index.php">
-                                
+                                 <input type="text"name = "aux" id="result" size="20"  placeholder ="" value = "" >
                                   <table>
                                     <tr>
                                         <th>#</th>
@@ -67,7 +67,7 @@
                                 </p>
 
                                
-                            </form>
+                           
 
 
                             <!-- Css de la tabla dinamica -->
@@ -87,9 +87,23 @@
                             <script>
                                 function TextoUsuario(element) {;
                                      id =   element.options[element.selectedIndex].value;
-                                     text = element.options[element.selectedIndex].text;
+                                     text = element.options[element.selectedIndex].text;    
+                                     var txt = document.getElementById("result").value;
+                                      
+                                      if (txt == "") {
+                                      txt = txt + id;
+                                      document.getElementById("result").value = txt;   
+                                      }
+                                      else {
+                                      txt = txt +","+ id;
+                                      document.getElementById("result").value = txt;   
+                                      }
+                                      
+                                
+
                                      
-                                    // ...
+
+                                                                       // ...
                                 }
 
 
@@ -111,15 +125,23 @@
                                     items++;
                                     
                                     var html = "<tr>";
-                                        html += "<td>" + items + "</td>";
+                                        html += "<td>" + id + "</td>";
                                         html += "<td>"+text+"</td>";
                                         html += "<td>"+texto+"</td>";
                                     html += "</tr>";
 
                                     var row = document.getElementById("tbody").insertRow();
                                     row.innerHTML = html;
+
+                                    
                                 }
                             </script>
+
+                             </form>
+
+
+                            
+
 
                             </ul>
                             <h4>Fecha de inicio:</h4>
