@@ -128,6 +128,32 @@ class mvc_controller {
     $this->view_page($pagina);
  }
 
+ function crear_proyecto(){
+  $seguridad= new seguridad;
+  $seguridad->set_session_form('crear_proyecto');
+  $pagina=$this->load_template('crear_proyecto');
+  ob_start();
+  include 'app/views/default/modules/m.crear_proyecto.php';
+  $datos = ob_get_clean();
+  $pagina = $this->replace_content('/\#CONTENIDO\#/ms' ,$datos, $pagina); 
+  $this->view_page($pagina); 
+ }
+
+ function crearProy($Bdatos){
+  $crearProy=new proyectos();
+   if($crearProy->crearProyecto($Bdatos,$_SESSION['ID_USUARIO'])==false){
+     echo'<script type="text/javascript">
+      alert("El proyecto que gusta agregar ya existe");
+      window.location.href="index.php?action=crearProyecto";
+      </script>';   
+   }
+   else{
+    echo'<script type="text/javascript">
+      alert("Proyecto creado con exito");
+      window.location.href="index.php?";
+      </script>';    
+   }
+ }
 
  function modificar_proyecto($idProyecto){
   $modProy = new proyectos();
