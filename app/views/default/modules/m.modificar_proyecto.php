@@ -20,9 +20,12 @@
                             
                              
 <<<<<<< HEAD
+<<<<<<< HEAD
                             <form method="POST">
                             <h3>Seleccionar integrantes:</h3>
 =======
+=======
+>>>>>>> parent of 202294c... cambios
                              
                             <h3 = align="center" >Seleccionar integrantes:</h3>
 >>>>>>> parent of 202294c... cambios
