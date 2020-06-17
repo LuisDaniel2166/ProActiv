@@ -34,6 +34,10 @@ require 'app/model/seguridad.class.php';
   echo $mvc->visualizar_proyecto($_GET['idProy']);
  }
 
+ else if ($_GET['action']=='vizActividad'){
+    echo $mvc->visualizar_actividad($_GET['idAct']);
+}
+
   else if ($_GET['action']=='modProy'){
   echo $mvc->modificar_proyecto($_GET['idProy']);
  }

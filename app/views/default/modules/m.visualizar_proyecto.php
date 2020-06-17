@@ -20,11 +20,15 @@
         <!--Integrantes del proyecto-->
             <h3>Integrantes del proyecto:</h3>
             <div id="nomusuario">
+            <?php if ($tsArray!=''){?>
             <?php foreach($tsArray2 as $data): ?>
                 <ul>
                     <li><h5 style="color:#2C2C2C"><?php echo $data['NOMUSUARIO'].' '.$data['APEPAT'].' '.$data['APEMAT'];?></h5> </li>
                 </ul>
-            <?php endforeach;?>
+            <?php endforeach;}
+            else{
+                echo('<h3>No hay integrantes registrados en el proyecto</h3>');
+            }?>
             </div>
         <!--Estado del proyecto-->
             <h3>Estado del proyecto:</h3>
@@ -48,6 +52,7 @@
             </div>
             <br></br>
         <!--Tabla de actividades-->
+        <?php if ($tsArray3!=''){?>
             <table class="table" width="100%" heigth="90px">
                 <h3 style="color:#2C2C2C">Actividades del proyecto:</h3>
                 <h3 style="color:#2C2C2C">Descripción de las actividades</h3>
@@ -55,10 +60,14 @@
                 <tr>
                 <td><?php echo $data2['NOMACTIVIDAD']?></td>
                 <td><?php echo $data2['DESCACT']?></td>
-                <td><button type="submit" class="btn btn-default">Ver Actividad</button></td>
+                <td><button type="submit" class="btn btn-default" role="link" onclick="window.location='index.php?action=vizActividad$idAct=<?php echo $data2['IDACTIVIDAD'] ?>'">Ver Actividad</button></td>
                 </tr>
                 <?php endforeach; ?>
             </table>
+                <?php }
+                else {
+                    echo('<h3>No hay actividades registradas en el proyecto</h3>');
+                }?>
             <p><button type="submit" class="btn btn-default">Agregar actividad</button></p>
             <p><a href="index.php?action=modProy&idProy=<?php echo $tsArray['IDPROYECTO'] ?>"><button type="submit" name="editar" class="btn btn-default" role="link" >Editar proyecto</button></a></p>            
             <p><button type="submit" name="editar" class="btn btn-default" role="link" onclick="window.location='index.php?action=genPDF$idProy=<?php echo $tsArray['IDPROYECTO'] ?>'">Generar pdf</button></p>

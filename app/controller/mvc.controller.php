@@ -128,6 +128,26 @@ class mvc_controller {
     $this->view_page($pagina);
  }
 
+ function visualizar_actividad($idProyecto){
+  $visAct = new proyectos();
+  $seguridad = new seguridad;
+  $seguridad->set_session_form('visualizar_proyecto');
+  $pagina=$this->load_template('Visualizar Proyecto');
+  ob_start();
+    $tsArray = $visProy->getInfPro($idProyecto);
+    $tsArray2 = $visProy->getIntPro($idProyecto);
+    $tsArray3 = $visProy->getActInf($idProyecto);
+    if($tsArray!='' ){
+      include 'app/views/default/modules/m.visualizar_proyecto.php'; 
+      $table = ob_get_clean();
+      $pagina = $this->replace_content('/\#CONTENIDO\#/ms' ,$table, $pagina);
+    }
+    else{
+      $pagina = $this->replace_content('/\#CONTENIDO\#/ms' ,'<h1>No hay informacion del proyecto solicitado (Error)</h1>' , $pagina);
+    }
+    $this->view_page($pagina);
+ }
+
  function crear_proyecto(){
   $seguridad= new seguridad;
   $seguridad->set_session_form('crear_proyecto');
