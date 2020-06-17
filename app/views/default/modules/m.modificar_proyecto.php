@@ -21,9 +21,12 @@
                              
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
                             <form method="POST">
                             <h3>Seleccionar integrantes:</h3>
 =======
+=======
+>>>>>>> parent of 202294c... cambios
 =======
 >>>>>>> parent of 202294c... cambios
                              
