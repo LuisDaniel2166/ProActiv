@@ -18,8 +18,8 @@
                            - <textarea type="text" class="form-control" placeholder="Descripcion de la actividad">Descripcion de la actividad 1</textarea>
                             
                              
-                             <form method="POST">
-                            <h3 = align="center" >Seleccionar integrantes:</h3>
+                            <form method="POST">
+                            <h3>Seleccionar integrantes:</h3>
 
                             
 

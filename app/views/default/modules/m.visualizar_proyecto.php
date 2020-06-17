@@ -52,7 +52,7 @@
             </div>
             <p><a href="index.php?action=modProy&idProy=<?php echo $tsArray['IDPROYECTO'] ?>"><button type="submit" name="editar" class="btn btn-default" role="link" >Editar proyecto</button></a></p>            
             <p><button type="submit" name="editar" class="btn btn-default" role="link" onclick="window.location='index.php?action=genPDF$idProy=<?php echo $tsArray['IDPROYECTO'] ?>'">Generar pdf</button></p>
-            <br></br>
+            <hr id="invis1" style="color:#2C2C2C">
         <!--Tabla de actividades-->
         <?php if ($tsArray3!=''){?>
             <table class="table" width="100%" heigth="90px">
