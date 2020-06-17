@@ -70,16 +70,22 @@ class actividades extends database {
 		return $datos;
 		mysqli_close($link);
 	}
-	function insActividad($datos,$idactividad){
-		$link = $this -> conectar();
-		$query = 'INSERT INTO actividad(NOMACTIVIDAD,FECINICIO,FECFIN,ESTADO,DESACT) VALUES("'.$datos['NOMACTIVIDAD'].'","'.$datos['FECINICIO'].'","'.$datos['FECFIN'].'","'.$datos['ESTADO'].'","'.$datos['DESACT'].'")';
-		if(mysqli_query($link, $query)){
-			echo "Inserción exitosa";
-		}else{
-			echo "Error en la modificacion";
-		}
-		return $datos;
-		mysqli_close($link);
-	}
+	function insActividad($datos,$idUsr){
+        $link = $this->conectar();
+        $query = 'SELECT * FROM actividad where NOMACTIVIDAD = "'.$datos['nombre_act'].'"';
+        echo $query;
+        $result = mysqli_query($link,$query);
+
+          if(mysqli_num_rows($result)>=1){
+            return false;
+        }
+        $query ='INSERT INTO actividad (IDACTIVIDAD, IDPROYECTO, NOMACTIVIDAD,DESCACT, FECINICIO, FECFIN, ESTADO) VALUES (NULL,'.$datos['idProyecto'].',"'.$datos['nombre_act'].'","'.$datos['desc_act'].'","'.$datos['fec_ini'].'","'.$datos['fec_fin'].'", "A")';
+        mysqli_query($link,$query);
+        $id=mysqli_insert_id($link);
+        $query= 'INSERT INTO usuario_actividad (IDUSUARIO, IDACTIVIDAD) VALUES ("'.$idUsr.'", "'.$id.'")';
+        mysqli_query($link,$query);
+        return true;
+        mysqli_close($link);
+    }
 }
 ?>

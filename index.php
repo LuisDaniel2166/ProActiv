@@ -36,7 +36,11 @@ require 'app/model/seguridad.class.php';
 
  else if ($_GET['action']=='vizActividad'){
     echo $mvc->visualizar_actividad($_GET['idAct']);
-}
+ }
+
+ else if ($_GET['action']=='crearAct'){
+  echo $mvc->crear_act($_GET['idProy']);
+ }
 
   else if ($_GET['action']=='modProy'){
   echo $mvc->modificar_proyecto($_GET['idProy']);
@@ -81,7 +85,16 @@ require 'app/model/seguridad.class.php';
       ];
      echo $mvc->aUsu($datos);
  }
-
+ else if ($_GET['action']=='crearActividad'){
+    $datos=[
+        'idProyecto'=> $_POST['idProyecto'],
+        'nombre_act'=>$_POST['nombre_act'],
+        'desc_act'=>$_POST['desc_act'],
+        'fec_ini'=>$_POST['fec_ini'],
+        'fec_fin'=>$_POST['fec_fin'],
+    ];
+    echo $mvc->crearActividad($datos);
+ }
  else if($_GET['action']=='crearProy'){
   $datos=[
       'nombre_proy'=> $_POST['nombre_proy'],

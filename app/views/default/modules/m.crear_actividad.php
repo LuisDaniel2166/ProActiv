@@ -1,5 +1,3 @@
-<div id="wrapper">
-
 <div class="section bgcolor noover">
     <div class="container">
         <div class="row">
@@ -14,49 +12,19 @@
 
 <section class="section">
     <div class="container">
+    <form method="post" action="index.php?action=crearActividad">
+                    <input  type="text" name="idProyecto" value="<?php echo $proy;?>" class="form-control">
                     <h3>Nombre de la actividad:</h3>
-                    <input type="text" name="nombre_act" class="form-control" placeholder="Nombre de la actividad">
+                    <input type="text" name="nombre_act" class="form-control" placeholder="Nombre de la actividad" required="true">
                     <h3>Descripcion de la actividad:</h3>
-                    <input type="text" class="form-control" placeholder="Descripcion de la actividad">
-                    <h3>Seleccionar integrantes:</h3>
-                    <select>
-                      <option value="1">Luis Daniel Mendez Castellanos</option>
-                      <option value="2">Keiry Yoseli Rodriguez Gonzalez</option>
-                      <option value="3">Alexis Torres Acosta</option>
-                      <option value="4">Fernando Miramontes Alvarez</option>
-                      <option value="5">Omar Oswaldo Rivera Flores</option>
-                    </select>
-                    <h4>Integrantes a registrar en la actividad</h4>
-                    <ul>
-                        <li>Alexis Torres Acosta</li>
-                        <li>Keiry Yoseli Rogriguez Gonzalez</li>
-                    </ul>
+                    <input type="text" name="desc_act" class="form-control" placeholder="Descripción de la actividad">
+                    <?php $date = date("Y-m-d");?>
                     <h4>Fecha de inicio:</h4>
-                    <p><input type="date" id="start" name="trip-start" value="2019-12-02" min="2019-12-02" max="2020-12-31"></p>
+                    <p><input type="date" id="start" name="fec_ini" value="<?php echo $date;?>" min="<?php echo $date;?>" max="2025-12-31" required="true"></p>
                     <h4>Fecha de finalización:</h4>
-                    <p><input type="date" id="start" name="trip-start" value="2019-12-02" min="2019-12-02" max="2020-12-31"></p>
-                        <p><button type="submit" class="btn btn-default" role="link" onclick="window.location='mis_actividades.html'">Crear actividad</button></p>
-                        
+                    <p><input type="date" id="end" name="fec_fin" value="<?php echo date("Y-m-d",strtotime($date."+ 1 days"));?>" min="<?php echo date("Y-m-d",strtotime($date."+ 1 days"));?>" max="2025-12-31" required="true"></p>
+                    
+                    <p><button type="submit" class="btn btn-default" role="link" >Crear</button></p>
+                    </form> 
     </div><!-- end container -->
 </section>
-
-<div class="section copyrights">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-3 col-md-3">
-                <div class="cop-logo">
-                    <img src="images/logobig.png" alt="" width="80%" height="80%">
-                </div>
-            </div>
-            <div class="col-lg-9 col-md-9 text-right">
-                <div class="cop-links">
-                    <ul class="list-inline">
-                        <li>&copy; 2019 S.O.P.A (Sistema Organizador de Proyectos y Actividades)</li>
-                        <li>Versión: Pre-Alpha</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-</div><!-- end wrapper -->

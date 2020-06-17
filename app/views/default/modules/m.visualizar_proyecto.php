@@ -59,7 +59,7 @@
                 <tr>
                 <td><?php echo $data2['NOMACTIVIDAD']?></td>
                 <td><?php echo $data2['DESCACT']?></td>
-                <td><button type="submit" class="btn btn-default" role="link" onclick="window.location='index.php?action=vizActividad$idAct=<?php echo $data2['IDACTIVIDAD'] ?>'">Ver Actividad</button></td>
+                <td><button type="submit" class="btn btn-default" role="link" onclick="window.location='index.php?action=vizActividad&idAct=<?php echo $data2['IDACTIVIDAD'] ?>'">Ver Actividad</button></td>
                 </tr>
                 <h3 style="color:#2C2C2C">Descripción de las actividades</h3>
                 <?php endforeach; ?>
@@ -68,8 +68,8 @@
                 else {
                     echo('<h3>No hay actividades registradas en el proyecto</h3>');
                 }?>
-            <p><button type="submit" class="btn btn-default">Agregar actividad</button></p>
-            <p><a href="index.php?action=modProy&idProy=<?php echo $tsArray['IDPROYECTO'] ?>"><button type="submit" name="editar" class="btn btn-default" role="link" >Editar proyecto</button></a></p>            
+            <p><a href="index.php?action=crearAct&idProy=<?php echo $tsArray['IDPROYECTO'] ?>"><button type="submit" name="crear" class="btn btn-default" role="link" >Agregar actividad</button></a></p>
+            <p><a href="index.php?action=modProy&idProy=<?php echo $tsArray['IDPROYECTO'] ?>"><button type="submit" name="editar" class="btn btn-default" role="link" >Editar proyecto</button></a></p>
             <p><button type="submit" name="editar" class="btn btn-default" role="link" onclick="window.location='index.php?action=genPDF$idProy=<?php echo $tsArray['IDPROYECTO'] ?>'">Generar pdf</button></p>
                                 <!--<p><input type="date" id="start" name="trip-start" value="2018-07-22" min="2018-01-01" max="2018-12-31"></p>-->
     </div><!-- end container -->

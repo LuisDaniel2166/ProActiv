@@ -195,7 +195,36 @@ class mvc_controller {
     }
     $this->view_page($pagina);
  }
- 
+ //Funcion para crear una actividad (Parte de entrada)
+ function crear_act($idProy){
+  $seguridad= new seguridad;
+  $seguridad->set_session_form('crear_actividad');
+  $pagina=$this->load_template('crear_actividad');
+  ob_start();
+  include 'app/views/default/modules/m.crear_actividad.php';
+  $id= array(0 => $idProy);
+  $datos = ob_get_clean();
+  $pagina = $this->replace_content('/\#CONTENIDO\#/ms' ,$datos, $pagina); 
+  $this->view_page($pagina); 
+ }
+ //Funcion para crear actividad (Parte de BD)
+ function crearActividad($Bdatos){
+  $crearAct=new actividades();
+   if($crearAct->insActividad($Bdatos,$_SESSION['ID_USUARIO'])==false){
+     echo'<script type="text/javascript">
+      alert("La actividad que gusta agregar ya existe");
+      window.location.href="index.php?action=crearAct";
+      </script>';   
+   }
+   else{
+    echo'<script type="text/javascript">
+      alert("Actividad creada con exito");
+      window.location.href="index.php?";
+      </script>';    
+   }
+ }
+
+ //Funcion :OMAR: para ver una activdad
  function ver_actividad($idAct){
   $visActv = new actividades();
   $seguridad = new seguridad;
