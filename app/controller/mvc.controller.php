@@ -195,6 +195,26 @@ class mvc_controller {
     $this->view_page($pagina);
  }
 
+  function modificar_actividad($IDACTIVIDAD){
+  $modAct = new actividades();
+  $usuarios = new Usuarios();
+  $seguridad = new seguridad;
+  $seguridad->set_session_form('modificar_actividad');
+  $pagina=$this->load_template('Modificar Actividad');
+  ob_start();
+    $tsArray = $modAct->verActividad($IDACTIVIDAD);
+    $tsArray2 = $usuarios->Usu();
+    if($tsArray!='' && $tsArray2!=''){
+      include 'app/views/default/modules/m.modificar_actividad.php'; 
+      $datos = ob_get_clean();
+      $pagina = $this->replace_content('/\#CONTENIDO\#/ms' ,$datos, $pagina); 
+    }
+    else{
+      $pagina = $this->replace_content('/\#CONTENIDO\#/ms' ,'<h1>error al mostrar el proyecto</h1>' , $pagina);
+    }
+    $this->view_page($pagina);
+ }
+
  //funcion generar pdf
  function generarInforme_pdf($idProyecto=''){
   $genPDF = new proyectos();
@@ -352,6 +372,22 @@ function FmodProy($Bdatos,$Datos1,$Datos2){
   else{
    echo'<script type="text/javascript">
      alert("El proyecto se ha ejecutado correctamente");
+     window.location.href="index.php?";
+     </script>';     
+  }
+}
+
+function FmodAct($Bdatos,$Datos1){
+ $FmodAct=new actividades();
+  if($FmodAct->MODACTDATOS($Bdatos,$Datos1)==false){
+    echo'<script type="text/javascript">
+     alert("Error al modificar la actividad");
+     window.location.href="index.php?";
+     </script>';   
+  }
+  else{
+   echo'<script type="text/javascript">
+     alert("La actividad se ha modificado con éxito");
      window.location.href="index.php?";
      </script>';     
   }

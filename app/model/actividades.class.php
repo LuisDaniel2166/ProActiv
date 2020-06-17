@@ -33,13 +33,16 @@ class actividades extends database {
 		}
 	}
 	//Funcion para obtener la información de una actividad especifica
-	function verActividad($idactv) {
+	function verActividad($IDACTIVIDAD) {
 		$link = $this -> conectar();
-		$query = "SELECT * FROM actividad ac WHERE ac.IDACTIVIDAD=" . $idactv . ";";
+		$query = $link = $this -> conectar();
+		$query = "SELECT * FROM actividad WHERE IDACTIVIDAD=" . $IDACTIVIDAD."";
+		echo $query;
 		$result = mysqli_query($link, $query);	
-		$datos[] = mysqli_fetch_assoc($result);
-		return $datos;
-		mysqli_close($link);	
+		$tsArray = mysqli_fetch_assoc($result);
+		return $tsArray;
+		mysqli_close($link);
+			
 		
 	}
 	//Funcion para obtener a los integrantes de la actividad
@@ -91,6 +94,35 @@ class actividades extends database {
         return $data;
         mysqli_close($link);
 	}
+	function MODACTDATOS($datos,$datos1){
+        //Abrimos la conexion
+        $link = $this->conectar();
+        $tamaño = count($datos1);
+        //Guardamos el query a ejecutar
+            foreach ($datos1 as $key => $data) {
+                $query2 = 'select * from usuario_actividad where IDACTIVIDAD ='.$datos['id'].' &&  IDUSUARIO='.$data;
+                
+                $result = mysqli_query($link,$query2); 
+                if(mysqli_num_rows($result)>=1){
+                return false;
+                }
+            
+
+            }
+
+
+        $query = 'UPDATE actividad SET NOMACTIVIDAD = "'.$datos['Actividad'].'", DESCPROY = "'.$datos['Desc'].'", FECINICIO = "'.$datos['fechaIni'].'", FECFIN = "'.$datos['fechaFin'].'" WHERE actividad.IDACTIVIDAD = '.$datos['id'];
+        //Ejecutamos el query
+        
+        mysqli_query($link,$query);
+        for ($i=0; $i < $tamaño ; $i++) { 
+        $query3 = 'INSERT INTO usuario_actividad (IDUSUARIO, IDPROYECTO) VALUES ("'.$datos1[$i].'", "'.$datos['id'].'")';
+         mysqli_query($link,$query3);       
+        }
+        return true;
+        mysqli_close($link);
+    }
+
 
 	function getInfAct($idactv) {
 		$link = $this -> conectar();

@@ -12,14 +12,14 @@
         </div><!-- end section -->
 
 <section class="section">
-	<div class="container">
-	<h3>Actividad:</h3>
-	<div id="nomACT">
-        <h4 style="color:#2C2C2C"><?php echo $tsArray['NOMACTIVIDAD'];?></h4>
-    </div>
-		<!--Descripcion de la actividad-->
-		<h3>Integrantes de la actividad:</h3>
-			 <?php foreach($tsArray2 as $data2):?>
+		<div class="container">
+		<h3>Actividad:</h3>
+		<div id="nomACT">
+	        <h4 style="color:#2C2C2C"><?php echo $tsArray['NOMACTIVIDAD'];?></h4>
+	    </div>
+			<!--Descripcion de la actividad-->
+			<h3>Integrantes de la actividad:</h3>
+				 <?php foreach($tsArray2 as $data2):?>
 			 	<ul>
                 <li style="color:#2C2C2C"><?php echo $data2['NOMBRE'];?></li>
                 </ul>
@@ -53,11 +53,14 @@
 		</p>
 		<br></br>
 		<p>
-			<button method='post' type="submit" name="btn_editar" onclick="window.location='index.php?action=editAct$idAct=<?php echo $datos['IDACTIVIDAD'];?>'" class="btn btn-default">
+			
+			<button method='post' type="submit" name="btn_editar" onclick="window.location='index.php?action=editAct&idAct=<?php echo $tsArray['IDACTIVIDAD'];?>'" class="btn btn-default">
 				Editar actividad
 			</button>
 		</p>
 
+
+		
 		<!--<p><input type="date" id="start" name="trip-start" value="2018-07-22" min="2018-01-01" max="2018-12-31"></p>-->
 	</div><!-- end container -->
 </section>
