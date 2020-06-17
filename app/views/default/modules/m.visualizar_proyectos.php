@@ -31,7 +31,7 @@
                                                                     echo date_format($date,'d/m/Y'); ?></td>
                                     <td style="color:#2C2C2C"><?php if($data['ESTADO']=='A'){echo 'Activo';}
                                                                     else{echo 'Finalizado';}?></td>
-                                    <td style="color:#2C2C2C"><p><p><a href="index.php?action=visualizarProyecto&idProy=<?php echo $data['IDPROYECTO']?>"><button type="submit" class="btn btn-default">Ver proyecto</button></a></p></p></td>
+                                    <td style="color:#2C2C2C"><p><button type="submit" class="btn btn-default">Ver proyecto</button></p></td>
                                   </tr>
                                   <?php endforeach;?>
                                 </table>        
