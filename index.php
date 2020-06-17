@@ -49,6 +49,9 @@ require 'app/model/seguridad.class.php';
  else if ($_GET['action']=='miperfil'){
   echo $mvc->mi_perfil("",0);
  }
+ else if ($_GET['action']=='verActividades'){
+  echo $mvc->ver_actividad($_GET['act']);
+ }
  else if ($_GET['action']=='maneUsus'){
         include "app/model/mcript.php"; 
         echo $mvc->mi_perfil(urldecode($desencriptar($_GET['idusu'])),0);

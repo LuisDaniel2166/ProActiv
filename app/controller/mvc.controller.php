@@ -3,6 +3,7 @@ require 'app/model/db.class.php';
 require 'app/model/proyectos.class.php';
 require 'app/model/Usuarios.class.php';
 require 'app/model/fpdf/fpdf.php';
+require 'app/model/actividades.class.php';
 session_start();
 class mvc_controller {
 
@@ -194,7 +195,25 @@ class mvc_controller {
     }
     $this->view_page($pagina);
  }
-
+ 
+ function ver_actividad($idAct){
+  $visActv = new actividades();
+  $seguridad = new seguridad;
+  $seguridad->set_session_form('actividad');
+  $pagina=$this->load_template('Actividad');
+  ob_start();
+	  $nomb = $visActv->getNombres($idAct);
+    $info = $visActv->verActividad($idAct);
+    if($info){
+      include 'app/views/default/modules/m.visualizar_actividad.php'; 
+      $table = ob_get_clean();
+      $pagina = $this->replace_content('/\#CONTENIDO\#/ms',$table, $pagina); 
+    }
+    else{
+      $pagina = $this->replace_content('/\#CONTENIDO\#/ms' ,'<h1>Información no disponible</h1>' , $pagina);
+    }
+    $this->view_page($pagina);
+ }
  //funcion generar pdf
  function generarInforme_pdf($idProyecto=''){
   $genPDF = new proyectos();
