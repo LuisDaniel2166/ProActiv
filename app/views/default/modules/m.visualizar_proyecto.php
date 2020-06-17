@@ -50,13 +50,13 @@
         <!--Tabla de actividades-->
             <table class="table" width="100%" heigth="90px">
                 <h3 style="color:#2C2C2C">Actividades del proyecto:</h3>
-                <h3 style="color:#2C2C2C">Descripción de las actividades</h3>
                 <?php foreach($tsArray3 as $data2):?>
                 <tr>
                 <td><?php echo $data2['NOMACTIVIDAD']?></td>
                 <td><?php echo $data2['DESCACT']?></td>
-                <td><button type="submit" class="btn btn-default">Ver Actividad</button></td>
+                <td style="color:#2C2C2C"><p><button method='post' onclick="window.location='index.php?action=verActividades&act=<?php echo $data['IDPROYECTO']?>'" type="submit" class="btn btn-default">Ver actividad</button></p></td>
                 </tr>
+                <h3 style="color:#2C2C2C">Descripción de las actividades</h3>
                 <?php endforeach; ?>
             </table>
             <p><button type="submit" class="btn btn-default">Agregar actividad</button></p>
