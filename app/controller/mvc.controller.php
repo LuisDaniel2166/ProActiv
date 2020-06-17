@@ -117,7 +117,7 @@ class mvc_controller {
     $tsArray = $visProy->getInfPro($idProyecto);
     $tsArray2 = $visProy->getIntPro($idProyecto);
     $tsArray3 = $visProy->getActInf($idProyecto);
-    if($tsArray!='' && $tsArray2!='' && $tsArray3!=''){
+    if($tsArray!='' ){
       include 'app/views/default/modules/m.visualizar_proyecto.php'; 
       $table = ob_get_clean();
       $pagina = $this->replace_content('/\#CONTENIDO\#/ms' ,$table, $pagina);
