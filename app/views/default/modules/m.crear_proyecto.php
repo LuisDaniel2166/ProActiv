@@ -14,9 +14,9 @@
             <div class="container">
             <form method="post" action="index.php?action=crearProy">
                             <h3>Nombre del proyecto:</h3>
-                            <input type="text" name="nombre_proy" class="form-control" placeholder="Nombre de la actividad" required="true">
+                            <input type="text" name="nombre_proy" class="form-control" placeholder="Nombre del proyecto" required="true">
                             <h3>Descripcion del proyecto:</h3>
-                            <input type="text" name="desc_proy" class="form-control" placeholder="Descripcion de la actividad">
+                            <input type="text" name="desc_proy" class="form-control" placeholder="Descripcion del proyecto">
                             <h4>Fecha de inicio:</h4>
                             <p><input type="date" name="fec_ini" value="2020-06-18" min="2020-06-18" max="2021-12-31" required="true"></p>
                             <h4>Fecha de finalización:</h4>

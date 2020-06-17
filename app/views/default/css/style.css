@@ -77,7 +77,7 @@
 
 body {
     background-color: #ffffff;
-    color: #aeaeae;
+    color: #7B7B7B;
     font-size: 15px;
     line-height: 1.6;
     font-family: "Poppins", serif;
@@ -226,7 +226,7 @@ MENU
 }
 
 .primary-menu li:hover .subsub-menu li a {
-    color: rgba(255, 255, 255, 0.7) !important;
+    color: rgb(255, 255, 255) !important;
 }
 
 .primary-menu li:hover .subsub-menu li:hover a {
@@ -1119,7 +1119,7 @@ FOOTER
 }
 
 .copyrights {
-    padding: 25px 0;
+    padding: 10px 0;
     background-color: #151515;
 }
 
