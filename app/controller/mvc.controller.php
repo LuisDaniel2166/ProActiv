@@ -129,22 +129,21 @@ class mvc_controller {
     $this->view_page($pagina);
  }
 
- function visualizar_actividad($idProyecto){
-  $visAct = new proyectos();
+ function visualizar_actividad($idAct){
+  $visActv = new actividades();
   $seguridad = new seguridad;
-  $seguridad->set_session_form('visualizar_proyecto');
-  $pagina=$this->load_template('Visualizar Proyecto');
+  $seguridad->set_session_form('actividad');
+  $pagina=$this->load_template('Actividad');
   ob_start();
-    $tsArray = $visProy->getInfPro($idProyecto);
-    $tsArray2 = $visProy->getIntPro($idProyecto);
-    $tsArray3 = $visProy->getActInf($idProyecto);
-    if($tsArray!='' ){
-      include 'app/views/default/modules/m.visualizar_proyecto.php'; 
+    $tsArray = $visActv->getInfAct($idAct);
+    $tsArray2 = $visActv->getIntAct($idAct);
+    if($tsArray !=''){
+      include 'app/views/default/modules/m.visualizar_actividad.php';  
       $table = ob_get_clean();
       $pagina = $this->replace_content('/\#CONTENIDO\#/ms' ,$table, $pagina);
     }
     else{
-      $pagina = $this->replace_content('/\#CONTENIDO\#/ms' ,'<h1>No hay informacion del proyecto solicitado (Error)</h1>' , $pagina);
+      $pagina = $this->replace_content('/\#CONTENIDO\#/ms' ,'<h1>No hay informacion de la actividad solicitada (Error)</h1>' , $pagina);
     }
     $this->view_page($pagina);
  }
@@ -195,25 +194,7 @@ class mvc_controller {
     }
     $this->view_page($pagina);
  }
- 
- function ver_actividad($idAct){
-  $visActv = new actividades();
-  $seguridad = new seguridad;
-  $seguridad->set_session_form('actividad');
-  $pagina=$this->load_template('Actividad');
-  ob_start();
-	  $nomb = $visActv->getNombres($idAct);
-    $info = $visActv->verActividad($idAct);
-    if($info){
-      include 'app/views/default/modules/m.visualizar_actividad.php'; 
-      $table = ob_get_clean();
-      $pagina = $this->replace_content('/\#CONTENIDO\#/ms',$table, $pagina); 
-    }
-    else{
-      $pagina = $this->replace_content('/\#CONTENIDO\#/ms' ,'<h1>Información no disponible</h1>' , $pagina);
-    }
-    $this->view_page($pagina);
- }
+
  //funcion generar pdf
  function generarInforme_pdf($idProyecto=''){
   $genPDF = new proyectos();

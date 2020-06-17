@@ -81,5 +81,25 @@ class actividades extends database {
 		return $datos;
 		mysqli_close($link);
 	}
+	function getIntAct($idAct){
+        $link = $this->conectar();
+		$query = "SELECT DISTINCT CONCAT(NOMUSUARIO,' ',APEPAT,' ',APEMAT) AS NOMBRE ,ua.IDUSUARIO FROM usuario us INNER JOIN usuario_actividad ua ON (us.IDUSUARIO=ua.IDUSUARIO) WHERE ua.IDACTIVIDAD=" . $idAct . "";
+        $result = mysqli_query($link,$query);
+        while ($tsArray = mysqli_fetch_array($result)){
+            $data[] = $tsArray;   
+		}
+        return $data;
+        mysqli_close($link);
+	}
+
+	function getInfAct($idactv) {
+		$link = $this -> conectar();
+		$query = "SELECT IDACTIVIDAD,NOMACTIVIDAD,FECINICIO,FECFIN,NOMPROY,a.ESTADO,DESCACT FROM actividad a inner join proyecto p on (a.IDPROYECTO=p.IDPROYECTO) WHERE IDACTIVIDAD=" . $idactv;
+		$result = mysqli_query($link, $query);	
+		$tsArray = mysqli_fetch_assoc($result);
+		return $tsArray;
+		mysqli_close($link);	
+		
+	}
 }
 ?>

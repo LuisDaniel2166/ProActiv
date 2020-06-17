@@ -34,9 +34,9 @@ require 'app/model/seguridad.class.php';
   echo $mvc->visualizar_proyecto($_GET['idProy']);
  }
 
- else if ($_GET['action']=='vizActividad'){
-    echo $mvc->visualizar_actividad($_GET['idAct']);
-}
+ else if ($_GET['action']=='verActividad'){
+  echo $mvc->visualizar_actividad($_GET['idAct']);
+ }
 
   else if ($_GET['action']=='modProy'){
   echo $mvc->modificar_proyecto($_GET['idProy']);
@@ -49,9 +49,7 @@ require 'app/model/seguridad.class.php';
  else if ($_GET['action']=='miperfil'){
   echo $mvc->mi_perfil("",0);
  }
- else if ($_GET['action']=='verActividades'){
-  echo $mvc->ver_actividad($_GET['act']);
- }
+
  else if ($_GET['action']=='maneUsus'){
         include "app/model/mcript.php"; 
         echo $mvc->mi_perfil(urldecode($desencriptar($_GET['idusu'])),0);
