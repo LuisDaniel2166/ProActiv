@@ -34,9 +34,16 @@ require 'app/model/seguridad.class.php';
   echo $mvc->visualizar_proyecto($_GET['idProy']);
  }
 
+ else if ($_GET['action']=='vizActividad'){
+    echo $mvc->visualizar_actividad($_GET['idAct']);
+}
+
   else if ($_GET['action']=='modProy'){
-  
   echo $mvc->modificar_proyecto($_GET['idProy']);
+ }
+
+ else if ($_GET['action']=='crearProyecto'){
+  echo $mvc->crear_proyecto();
  }
 
  else if ($_GET['action']=='miperfil'){
@@ -74,6 +81,17 @@ require 'app/model/seguridad.class.php';
       ];
      echo $mvc->aUsu($datos);
  }
+
+ else if($_GET['action']=='crearProy'){
+  $datos=[
+      'nombre_proy'=> $_POST['nombre_proy'],
+      'desc_proy'=>$_POST['desc_proy'],
+      'fec_ini'=>$_POST['fec_ini'],
+      'fec_fin'=>$_POST['fec_fin'],
+  ];
+ echo $mvc->crearProy($datos);
+}
+
  else if($_GET['action']=='eper'){
      $datos1=[
           'nombre'=> $_POST['nom'],

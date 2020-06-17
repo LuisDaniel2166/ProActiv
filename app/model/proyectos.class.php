@@ -93,11 +93,30 @@ class proyectos extends database{
     function getIntAct($idActividad){
         $link = $this->conectar();
         $query = "SELECT * FROM usuario u INNER JOIN usuario_actividad ua on (u.IDUSUARIO=ua.IDUSUARIO) WHERE ua.IDACTIVIDAD =".$idActividad;
+        
         $result = mysqli_query($link,$query);
         while ($tsArray = mysqli_fetch_array($result)){
             $data[] = $tsArray;
         }
         return $data;
+        mysqli_close($link);
+    }
+
+    function crearProyecto($datos,$idUsr){
+        $link = $this->conectar();
+        $query = 'SELECT * FROM proyecto where NOMPROY = "'.$datos['nombre_proy'].'"';
+        echo $query;
+        $result = mysqli_query($link,$query);
+
+          if(mysqli_num_rows($result)>=1){
+            return false;
+        }
+        $query ='INSERT INTO proyecto (IDPROYECTO, NOMPROY, DESCPROY, FEINIPRO, FEFINPRO, ESTADO) VALUES (NULL,"'.$datos['nombre_proy'].'","'.$datos['desc_proy'].'","'.$datos['fec_ini'].'","'.$datos['fec_fin'].'", "A")';
+        mysqli_query($link,$query);
+        $id=mysqli_insert_id($link);
+        $query= 'INSERT INTO usuario_proyecto (IDUSUARIO, IDPROYECTO, USUROL) VALUES ("'.$idUsr.'", "'.$id.'", "E")';
+        mysqli_query($link,$query);
+        return true;
         mysqli_close($link);
     }
 }
