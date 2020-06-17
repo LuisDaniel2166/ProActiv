@@ -340,6 +340,23 @@ function aUsu($Bdatos){
      </script>';     
   }
 }
+
+function FmodProy($Bdatos,$Datos1,$Datos2){
+ $FmodProy=new Proyectos();
+  if($FmodProy->MODPROYDATOS($Bdatos,$Datos1,$Datos2)==false){
+    echo'<script type="text/javascript">
+     alert("Error al actualizar el proyecto");
+     window.location.href="index.php?action=vaUsu";
+     </script>';   
+  }
+  else{
+   echo'<script type="text/javascript">
+     alert("El proyecto se ha ejecutado correctamente");
+     window.location.href="index.php?";
+     </script>';     
+  }
+}
+
 //
 function editP($Bdatos){
  $usu=new Usuarios();

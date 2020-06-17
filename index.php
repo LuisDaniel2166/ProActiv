@@ -107,6 +107,23 @@ require 'app/model/seguridad.class.php';
     echo $mvc->editP($datos1);
      
  }
+else if($_GET['action']=='modPro'){
+    $Texto_ID = $_POST['TextoID'];
+    $ArrayID = explode(',', $Texto_ID);
+    $TextoRol = $_POST['TextoRoles'];
+    $ArrayRol= explode(',', $TextoRol);
+
+     $datos1=[
+         'id' => $_POST['TextoIDProyecto'],
+         'Proyecto' => $_POST['nombre_Pro'],
+         'Desc' => $_POST['Desc_Pro'],
+         'fechaIni' => $_POST['trip-start'],
+         'fechaFin' => $_POST['trip-end']                 
+          
+      ];
+    echo $mvc->FmodProy($datos1,$ArrayID,$ArrayRol);
+     
+ }
  else if(isset($_SESSION['USUARIO']))//muestra la pantalla princripal
  {
   echo $mvc->principal();

@@ -12,13 +12,14 @@
 
         <section class="section">
             <div class="container">
+                            <form method="post" action="index.php?action=modPro">
                             <h3>Nombre del proyecto:</h3>
-                            <input type="text" name="nombre_act" class="form-control" placeholder="Nombre de la actividad" value="Actividad 1">
+                            <input type="text" name="nombre_Pro" class="form-control" placeholder="Nombre de la actividad" value="<?php echo $tsArray['NOMPROY']?>">
                             <h3>Descripcion del proyecto:</h3>
-                           - <textarea type="text" class="form-control" placeholder="Descripcion de la actividad">Descripcion de la actividad 1</textarea>
+                           <input type="text" name="Desc_Pro" class="form-control" placeholder="Descripcion del proyecto" value="<?php echo $tsArray['DESCPROY']?>">
                             
                              
-                             <form method="POST">
+                             
                             <h3 = align="center" >Seleccionar integrantes:</h3>
 
                             
@@ -41,7 +42,7 @@
 
                             </div>
 
-                         </form>
+                         
 
 
 
@@ -50,8 +51,10 @@
 
 
                             <!-- Metodo para la creación de la tabla dinámica -->
-                            <form method="POST" action="index.php">
-                                 <input type="text"name = "aux" id="result" size="20"  placeholder ="" value = "" >
+                            
+                                 <input type="text"name = "TextoID" id="result" size="20"  placeholder ="" value = ""  >
+                                 <input type="text"name = "TextoRoles" id="idTextoRoles" size="20"  placeholder ="" value = "" >
+                                 <input type="text"name = "TextoIDProyecto" id="idTextoRoles" size="20"  placeholder ="" value = "<?php echo $tsArray['IDPROYECTO']?>">
                                   <table>
                                     <tr>
                                         <th>#</th>
@@ -85,45 +88,100 @@
   
                             <!-- Funcion para obtener el texto del CMB 1 -->
                             <script>
-                                function TextoUsuario(element) {;
+
+                                Array.prototype.diff = function(arr2) {
+                                    var ret = [];
+                                    this.sort();
+                                    arr2.sort();
+                                    for(var i = 0; i < this.length; i += 1) {
+                                        if(arr2.indexOf(this[i]) > -1){
+                                            ret.push(this[i]);
+                                        }
+                                    }
+                                    return ret;
+                                };
+
+
+                                function TextoUsuario(element) {
+
+
                                      id =   element.options[element.selectedIndex].value;
-                                     text = element.options[element.selectedIndex].text;    
+                                     text = element.options[element.selectedIndex].text; 
+                                     var arreglo1;
+                                     var arreglo2;
+                                     estado = "2";
                                      var txt = document.getElementById("result").value;
-                                      
+                                    
                                       if (txt == "") {
                                       txt = txt + id;
-                                      document.getElementById("result").value = txt;   
+                                      document.getElementById("result").value = txt; 
+                                      estado = "2";
+                                            
                                       }
                                       else {
-                                      txt = txt +","+ id;
-                                      document.getElementById("result").value = txt;   
+
+                                        if(txt.includes(id)){
+                                            estado = "1";
+                                            id=null;
+                                        }else{
+                                            txt = txt +","+ id;
+                                            document.getElementById("result").value = txt; 
+                                            estado = "2";
+                                        }       
+                                       
+                                        
                                       }
-                                      
-                                
-
-                                     
-
+                                  
                                                                        // ...
                                 }
 
 
                                 function TextoRol(element) {
                                      texto = element.options[element.selectedIndex].text;
+                                     var txt = document.getElementById("idTextoRoles").value;
+                                     var auxiliar;
+                                     if(texto == 'Encargado'){
+                                        auxiliar = 'E';
+
+                                     }//Primer if
+                                      else if (texto == 'Participante'){
+                                        auxiliar = 'N';
+                                     }//Primer else if
+
+                                      if (txt == "") {
+                                      txt = txt + auxiliar;
+                                      document.getElementById("idTextoRoles").value = txt;   
+                                      }//Validación de vacío
+
+                                      else {
+                                        if(estado =="1"){
+                                            auxiliar = "";
+                                            txt = txt+ auxiliar;
+                                            document.getElementById("idTextoRoles").value = txt;  
+                                        }//Si no es vacío y el estado es 1
+                                        else if (estado=="2"){
+                                      txt = txt +","+ auxiliar;
+                                      document.getElementById("idTextoRoles").value = txt;  
+                                  }//Si no es vacio y el estado es 2    
                                     // ...
-                                }
+                                }//Si no es vacío
+                            }
                                 //Funcion para crear las nuevas filas de la tabla
                                 var text  //Nombre
                                 var texto //Rol
                                 var id
                                 var sel
+                                var estado = "2";
                                 var items = 0;                              
                                 var Nombres ="";                                
                                 function addItem() {
                                     if (text=="undefined"){
                                         return;
-                                    }                       
-                                    items++;
+                                    }   
+
                                     
+                                    items++;
+                                    if (estado=="1") {return;}
                                     var html = "<tr>";
                                         html += "<td>" + id + "</td>";
                                         html += "<td>"+text+"</td>";
@@ -137,7 +195,7 @@
                                 }
                             </script>
 
-                             </form>
+                             
 
 
                             
@@ -145,11 +203,11 @@
 
                             </ul>
                             <h4>Fecha de inicio:</h4>
-                            <p><input type="date" id="start" name="trip-start" value="2019-12-02" min="2019-12-02" max="2020-12-31"></p>
+                            <p><input type="date" id="start" name="trip-start" value="<?php echo $tsArray['FEINIPRO']?>" min="2020-06-18" max="2021-12-31"></p>
                             <h4>Fecha de finalización:</h4>
-                            <p><input type="date" id="start" name="trip-start" value="2019-12-02" min="2019-12-02" max="2020-12-31"></p>
-                                <p><button type="submit" class="btn btn-default" role="link" onclick="window.location='mis_actividades.html'">Guardar Cambios</button></p>
-                             
+                            <p><input type="date" id="start" name="trip-end" value="<?php echo $tsArray['FEFINPRO']?>" min="2020-06-19" max="2021-12-31"></p>
+                            <p><button type="submit" class="btn btn-default" role="link" onclick="window.location='mis_actividades.html'">Guardar Cambios</button></p>
+                             </form>
                              <p><a href="index.php?action=visualizarProyecto&idProy=<?php echo $tsArray['IDPROYECTO']?>">><button type="submit" name="editar" class="btn btn-default" role="link" onclick="'m.modificar_proyecto.php" >Cancelar</button></a></p>  
 
 
