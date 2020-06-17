@@ -88,25 +88,50 @@
   
                             <!-- Funcion para obtener el texto del CMB 1 -->
                             <script>
-                                function TextoUsuario(element) {;
+
+                                Array.prototype.diff = function(arr2) {
+                                    var ret = [];
+                                    this.sort();
+                                    arr2.sort();
+                                    for(var i = 0; i < this.length; i += 1) {
+                                        if(arr2.indexOf(this[i]) > -1){
+                                            ret.push(this[i]);
+                                        }
+                                    }
+                                    return ret;
+                                };
+
+
+                                function TextoUsuario(element) {
+
+
                                      id =   element.options[element.selectedIndex].value;
                                      text = element.options[element.selectedIndex].text; 
-                                      
+                                     var arreglo1;
+                                     var arreglo2;
+                                     estado = "2";
                                      var txt = document.getElementById("result").value;
-                                      
+                                    
                                       if (txt == "") {
                                       txt = txt + id;
-                                      document.getElementById("result").value = txt;   
+                                      document.getElementById("result").value = txt; 
+                                      estado = "2";
+                                            
                                       }
                                       else {
-                                      txt = txt +","+ id;
-                                      document.getElementById("result").value = txt;   
+
+                                        if(txt.includes(id)){
+                                            estado = "1";
+                                            id=null;
+                                        }else{
+                                            txt = txt +","+ id;
+                                            document.getElementById("result").value = txt; 
+                                            estado = "2";
+                                        }       
+                                       
+                                        
                                       }
-
-                                      
-
-                                     
-
+                                  
                                                                        // ...
                                 }
 
@@ -118,34 +143,45 @@
                                      if(texto == 'Encargado'){
                                         auxiliar = 'E';
 
-                                     } else if (texto == 'Participante'){
+                                     }//Primer if
+                                      else if (texto == 'Participante'){
                                         auxiliar = 'N';
-                                     }
+                                     }//Primer else if
 
                                       if (txt == "") {
                                       txt = txt + auxiliar;
                                       document.getElementById("idTextoRoles").value = txt;   
-                                      }
+                                      }//Validación de vacío
+
                                       else {
+                                        if(estado =="1"){
+                                            auxiliar = "";
+                                            txt = txt+ auxiliar;
+                                            document.getElementById("idTextoRoles").value = txt;  
+                                        }//Si no es vacío y el estado es 1
+                                        else if (estado=="2"){
                                       txt = txt +","+ auxiliar;
                                       document.getElementById("idTextoRoles").value = txt;  
-
+                                  }//Si no es vacio y el estado es 2    
                                     // ...
-                                }
+                                }//Si no es vacío
                             }
                                 //Funcion para crear las nuevas filas de la tabla
                                 var text  //Nombre
                                 var texto //Rol
                                 var id
                                 var sel
+                                var estado = "2";
                                 var items = 0;                              
                                 var Nombres ="";                                
                                 function addItem() {
                                     if (text=="undefined"){
                                         return;
-                                    }                       
-                                    items++;
+                                    }   
+
                                     
+                                    items++;
+                                    if (estado=="1") {return;}
                                     var html = "<tr>";
                                         html += "<td>" + id + "</td>";
                                         html += "<td>"+text+"</td>";
