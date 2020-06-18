@@ -62,6 +62,7 @@
                 <tr>
                 <td><?php echo $data2['NOMACTIVIDAD']?></td>
                 <td><?php echo $data2['DESCACT']?></td>
+                <td><a href="index.php?action=verActividad&idAct=<?php echo $data2['IDACTIVIDAD']?>"><button type="submit" name="editar" class="btn btn-default" role="link" >Ver actividad</button></a></td> 
                 </tr>
                 <?php endforeach; ?>
                 <h3 style="color:#2C2C2C">Descripción de las actividades</h3>
