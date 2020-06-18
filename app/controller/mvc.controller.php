@@ -118,7 +118,7 @@ class mvc_controller {
     $tsArray = $visProy->getInfPro($idProyecto);
     $tsArray2 = $visProy->getIntPro($idProyecto);
     $tsArray3 = $visProy->getActInf($idProyecto);
-    if($tsArray!='' ){
+    if($tsArray!=''){
       include 'app/views/default/modules/m.visualizar_proyecto.php'; 
       $table = ob_get_clean();
       $pagina = $this->replace_content('/\#CONTENIDO\#/ms' ,$table, $pagina);
@@ -221,6 +221,24 @@ class mvc_controller {
       window.location.href="index.php?";
       </script>';    
    }
+  function modificar_actividad($IDACTIVIDAD){
+  $modAct = new actividades();
+  $usuarios = new Usuarios();
+  $seguridad = new seguridad;
+  $seguridad->set_session_form('modificar_actividad');
+  $pagina=$this->load_template('Modificar Actividad');
+  ob_start();
+    $tsArray = $modAct->verActividad($IDACTIVIDAD);
+    $tsArray2 = $usuarios->Usu();
+    if($tsArray!='' && $tsArray2!=''){
+      include 'app/views/default/modules/m.modificar_actividad.php'; 
+      $datos = ob_get_clean();
+      $pagina = $this->replace_content('/\#CONTENIDO\#/ms' ,$datos, $pagina); 
+    }
+    else{
+      $pagina = $this->replace_content('/\#CONTENIDO\#/ms' ,'<h1>error al mostrar el proyecto</h1>' , $pagina);
+    }
+    $this->view_page($pagina);
  }
 
  //funcion generar pdf
@@ -387,18 +405,30 @@ function aUsu($Bdatos){
 }
 
 function FmodProy($Bdatos,$Datos1,$Datos2){
+
  $FmodProy=new Proyectos();
   if($FmodProy->MODPROYDATOS($Bdatos,$Datos1,$Datos2)==false){
-    echo'<script type="text/javascript">
-     alert("Error al actualizar el proyecto");
-     window.location.href="index.php?action=vaUsu";
-     </script>';   
+    
   }
   else{
-   echo'<script type="text/javascript">
-     alert("El proyecto se ha ejecutado correctamente");
-     window.location.href="index.php?";
-     </script>';     
+       
+  }
+}
+
+function FmodAct($Bdatos,$Datos1){
+ $FmodAct=new actividades();
+  if($FmodAct->MODACTDATOS($Bdatos,$Datos1)==false){
+
+       echo'<script type="text/javascript">
+     alert("Al menos un usuario duplicado o no existente");
+     window.location.href="index.php?action=verActividad&idAct='.($Bdatos['id']).'";
+     </script>'; 
+  }
+  else{
+        echo'<script type="text/javascript">
+     alert("Actividad actualizada con éxito");
+     window.location.href="index.php";
+     </script>'; 
   }
 }
 

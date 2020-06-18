@@ -36,10 +36,14 @@ require 'app/model/seguridad.class.php';
 
  else if ($_GET['action']=='verActividad'){
   echo $mvc->visualizar_actividad($_GET['idAct']);
- }
+  }
 
   else if ($_GET['action']=='modProy'){
   echo $mvc->modificar_proyecto($_GET['idProy']);
+ }
+
+  else if ($_GET['action']=='editAct'){
+  echo $mvc->modificar_actividad($_GET['idAct']);
  }
 
  else if ($_GET['action']=='crearProyecto'){
@@ -139,6 +143,23 @@ else if($_GET['action']=='modPro'){
     echo $mvc->FmodProy($datos1,$ArrayID,$ArrayRol);
      
  }
+
+ else if($_GET['action']=='modAct'){
+    $Texto_ID = $_POST['TextoIDUSU'];
+    $ArrayID = explode(',', $Texto_ID);
+    
+     $datos1=[
+         'id' => $_POST['TextoIDActividad'],
+         'Actividad' => $_POST['nombre_Act'],
+         'Desc' => $_POST['Desc_Act'],
+         'fechaIni' => $_POST['trip-start'],
+         'fechaFin' => $_POST['trip-end']                 
+          
+      ];
+    echo $mvc->FmodAct($datos1,$ArrayID);
+     
+ }
+
  else if(isset($_SESSION['USUARIO']))//muestra la pantalla princripal
  {
   echo $mvc->principal();

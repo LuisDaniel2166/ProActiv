@@ -149,8 +149,7 @@
                                       else {
                                         if(estado =="1"){
                                             auxiliar = "";
-                                            txt = txt+ auxiliar;
-                                            document.getElementById("idTextoRoles").value = txt;  
+                                            txt = txt+ auxiliar; 
                                         }//Si no es vacío y el estado es 1
                                         else if (estado=="2"){
                                       txt = txt +","+ auxiliar;

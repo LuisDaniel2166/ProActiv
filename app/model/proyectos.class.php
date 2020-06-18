@@ -111,6 +111,7 @@ class proyectos extends database{
 
 
         $query = 'UPDATE proyecto SET NOMPROY = "'.$datos['Proyecto'].'", DESCPROY = "'.$datos['Desc'].'", FEINIPRO = "'.$datos['fechaIni'].'", FEFINPRO = "'.$datos['fechaFin'].'", ESTADO = "A" WHERE proyecto.IDPROYECTO = '.$datos['id'];
+        echo $query; 
         //Ejecutamos el query
         
         mysqli_query($link,$query);
