@@ -31,7 +31,6 @@
                             <?php foreach($tsArray2 as $data): ?>
                             <option value="<?php echo $data['IDUSUARIO'];?>"><?php echo ($data['NOMUSUARIO'].' '.$data['APEPAT'].' '.$data['APEMAT']);?></option>
                              <?PHP endforeach;?> 
-                             <option value="0" selected>Seleccione a un usuario</option>
                              </select>
                              </div>
 
@@ -45,8 +44,8 @@
 
                             <!-- Metodo para la creación de la tabla dinámica -->
                             
-                                 <input type="text"name = "TextoIDUSU" id="result" size="20"  placeholder ="" value = ""  >
-                                 <input type="text"name = "TextoIDActividad" id="idTextoRoles" size="20"  placeholder ="" value = "<?php echo $tsArray['IDACTIVIDAD']?>">
+                                 <input type="hidden"name = "TextoIDUSU" id="result" size="20"  placeholder ="" value = "">
+                                 <input type="hidden"name = "TextoIDActividad" id="idTextoRoles" size="20"  placeholder ="" value = "<?php echo $tsArray['IDACTIVIDAD']?>">
                                   <table>
                                     <tr>
                                         <th>#</th>
@@ -57,7 +56,7 @@
                                 </table>    
 
                                 <p>
-                                    <button type="button" name ="button" onclick="addItem();TextoUsuario(this);">Añadir Miembro</button>
+                                    <button type="button" name ="button" onclick="TextoUsuario(usuarios);addItem();">Añadir Miembro</button>
                                 </p>
 
                                
@@ -136,7 +135,7 @@
                                 var items = 0;                              
                                 var Nombres ="";                                
                                 function addItem() {
-                                    if (text=="undefined"){
+                                    if (text==undefined){
                                         return;
                                     }   
 

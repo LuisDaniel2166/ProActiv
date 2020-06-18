@@ -103,9 +103,6 @@ class actividades extends database {
             foreach ($datos1 as $key => $data) {
                 $query2 = 'select * from usuario_actividad where IDACTIVIDAD ='.$datos['id'].' and  IDUSUARIO='.$data; 
                 $result = mysqli_query($link,$query2);
-                echo $query2; 
-                var_dump($data);
-
                 if(mysqli_num_rows($result)>=1){
                 
                 }else{
@@ -119,7 +116,7 @@ class actividades extends database {
 
             }
         $query = 'UPDATE actividad SET NOMACTIVIDAD = "'.$datos['Actividad'].'", DESCACT = "'.$datos['Desc'].'", FECINICIO = "'.$datos['fechaIni'].'", FECFIN = "'.$datos['fechaFin'].'" WHERE actividad.IDACTIVIDAD = '.$datos['id'];
-        echo $query;
+        mysqli_query($link,$query);  
       	
 
         //Ejecutamos el query

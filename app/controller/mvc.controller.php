@@ -375,14 +375,15 @@ function FmodProy($Bdatos,$Datos1,$Datos2){
 function FmodAct($Bdatos,$Datos1){
  $FmodAct=new actividades();
   if($FmodAct->MODACTDATOS($Bdatos,$Datos1)==false){
+
        echo'<script type="text/javascript">
-     alert("El usuario ya existe intente con uno nuevo");
-     window.location.href="index.php";
+     alert("Al menos un usuario duplicado o no existente");
+     window.location.href="index.php?action=verActividad&idAct='.($Bdatos['id']).'";
      </script>'; 
   }
   else{
         echo'<script type="text/javascript">
-     alert("El usuario ya existe intente con uno nuevo");
+     alert("Actividad actualizada con éxito");
      window.location.href="index.php";
      </script>'; 
   }
