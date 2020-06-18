@@ -100,7 +100,6 @@ class proyectos extends database{
         //Guardamos el query a ejecutar
             foreach ($datos1 as $key => $data) {
                 $query2 = 'select * from usuario_proyecto where IDPROYECTO ='.$datos['id'].' &&  IDUSUARIO='.$data;
-                
                 $result = mysqli_query($link,$query2); 
                 if(mysqli_num_rows($result)>=1){
                 return false;

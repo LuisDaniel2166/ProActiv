@@ -182,7 +182,7 @@ class mvc_controller {
   $seguridad->set_session_form('modificar_proyecto');
   $pagina=$this->load_template('Modificar Proyecto');
   ob_start();
-    $tsArray = $modProy->getInfPro($_SESSION['ID_USUARIO']);
+    $tsArray = $modProy->getInfPro($idProyecto);
     $tsArray2 = $usuarios->Usu();
     if($tsArray!='' && $tsArray2!=''){
       include 'app/views/default/modules/m.modificar_proyecto.php'; 
