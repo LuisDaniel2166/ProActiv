@@ -201,8 +201,8 @@ class mvc_controller {
   $seguridad->set_session_form('crear_actividad');
   $pagina=$this->load_template('crear_actividad');
   ob_start();
+  $id= array(1 => $idProy);
   include 'app/views/default/modules/m.crear_actividad.php';
-  $id= array(0 => $idProy);
   $datos = ob_get_clean();
   $pagina = $this->replace_content('/\#CONTENIDO\#/ms' ,$datos, $pagina); 
   $this->view_page($pagina); 
@@ -213,7 +213,7 @@ class mvc_controller {
    if($crearAct->insActividad($Bdatos,$_SESSION['ID_USUARIO'])==false){
      echo'<script type="text/javascript">
       alert("La actividad que gusta agregar ya existe");
-      window.location.href="index.php?action=crearAct";
+      window.location.href="index.php?action=crearAct&idProy=<?php echo $Bdatos['.'idProyecto'.']?>";
       </script>';   
    }
    else{

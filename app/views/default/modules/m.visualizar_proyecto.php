@@ -61,9 +61,9 @@
                 <td><?php echo $data2['DESCACT']?></td>
                 <td><button type="submit" class="btn btn-default" role="link" onclick="window.location='index.php?action=vizActividad&idAct=<?php echo $data2['IDACTIVIDAD'] ?>'">Ver Actividad</button></td>
                 </tr>
-                <h3 style="color:#2C2C2C">Descripción de las actividades</h3>
                 <?php endforeach; ?>
             </table>
+            <h3 style="color:#2C2C2C">Descripción de las actividades</h3>
                 <?php }
                 else {
                     echo('<h3>No hay actividades registradas en el proyecto</h3>');

@@ -13,7 +13,7 @@
 <section class="section">
     <div class="container">
     <form method="post" action="index.php?action=crearActividad">
-                    <input  type="text" name="idProyecto" value="<?php echo $proy;?>" class="form-control">
+                    <input  type="text" name="idProyecto" value="<?php echo $id[1];?>" class="form-control">
                     <h3>Nombre de la actividad:</h3>
                     <input type="text" name="nombre_act" class="form-control" placeholder="Nombre de la actividad" required="true">
                     <h3>Descripcion de la actividad:</h3>
