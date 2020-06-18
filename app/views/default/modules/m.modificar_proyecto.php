@@ -1,4 +1,4 @@
-        <div class="section bgcolor noover">
+<div class="section bgcolor noover">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
@@ -28,28 +28,19 @@
 
                             <div style="text-align:center;">
                                 <h5>Elige a los miembros participantes</h5>
-                            <select name="Usuarios" id='usuarios' onChange="TextoUsuario(this);" autofocus>
+                            <select name="Usuarios" id='usuarios' autofocus>
                             
                             <?php foreach($tsArray2 as $data): ?>
                             <option value="<?php echo $data['IDUSUARIO'];?>"><?php echo ($data['NOMUSUARIO'].' '.$data['APEPAT'].' '.$data['APEMAT']);?></option>
                              <?PHP endforeach;?> 
-                             <option value="0" selected>Seleccione a un usuario</option>
                              </select>
                              <h5>Asigna los roles correspondientes</h5>
-                             <select name="Usuarios" onChange="TextoRol(this);" autofocus>
+                             <select name="Usuarios" id="Rol"  autofocus>
                                 <option value="1">Encargado</option>
-                                <option value="2">Participante</option>
-                                <option value="0" selected>Seleccione un rol</option>
+                                <option value="2" selected >Participante</option>
                              </select>
 
                             </div>
-
-                         
-
-
-
-
-                              
 
 
                             <!-- Metodo para la creación de la tabla dinámica -->
@@ -68,7 +59,7 @@
                                 </table>    
 
                                 <p>
-                                    <button type="button" name ="button" onclick="addItem();">Añadir Miembro</button>
+                                    <button type="button" name ="button" onclick="TextoUsuario(usuarios);TextoRol(Rol);addItem();">Añadir Miembro</button>
                                 </p>
 
                                
@@ -177,7 +168,7 @@
                                 var items = 0;                              
                                 var Nombres ="";                                
                                 function addItem() {
-                                    if (text=="undefined"){
+                                    if (text===undefined||texto===undefined){
                                         return;
                                     }   
 
