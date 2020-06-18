@@ -230,6 +230,7 @@ class mvc_controller {
       //Integrantes del proyecto
       $pdf->SetFont('Arial','B',16);
       $pdf->Cell(0,10,'Integrantes del proyecto',0,1,'L');
+      if($tsArray2!=''){
       $pdf->SetFont('Arial','B',14);
       $pdf->Cell(110,7,'Nombre completo del integrante',1,0,'C');
       $pdf->Cell(86,7,'Rol del integrante',1,1,'C');
@@ -239,42 +240,58 @@ class mvc_controller {
         if($data['USUROL']=='E'){$rol='Encargado';}else{$rol='Participante';}
         $pdf->Cell(86,7,$rol,1,1,'C');
       endforeach;
+      }
+      else{
+        $pdf->SetFont('Arial','B',16);
+        $pdf->Cell(0,20,'No hay usuarios registrados en este proyecto',0,1,'C');
+      }
+      
       $pdf->Cell(0,10,'',0,1,'L');
       //Seccion de actividades
       $pdf->SetFont('Arial','B',16);
       $pdf->Cell(0,10,'Actividades asociadas al proyecto',0,1,'L');
-      $contador=0;
-      foreach ($tsArray3 as $data2):
-        $contador++;
+      if($tsArray3!=''){
+        $contador=0;
+        foreach ($tsArray3 as $data2):
+          $contador++;
+          $pdf->SetFont('Arial','B',16);
+          $pdf->Cell(70,10,'Nombre de la actividad '.$contador.': ',0,0,'L');
+          $pdf->SetFont('Arial','',14);
+          $pdf->Cell(0,10,$data2['NOMACTIVIDAD'],0,1,'L');
+          $pdf->SetFont('Arial','B',16);
+          $pdf->Cell(0,10,'Descripcion de la actividad: ',0,1,'L');
+          $pdf->SetFont('Arial','',14);
+          $pdf->Cell(0,5,$data2['DESCACT'],0,1,'L');
+          $pdf->Cell(0,5,'',0,1,'L');
+          //tabla de fechas de actividad
+          $pdf->SetFont('Arial','B',14);
+          $pdf->Cell(98,7,'Fecha de inicio de la actividad',1,0,'C');
+          $pdf->Cell(98,7,'Fecha de finalizacion de la actividad',1,1,'C');
+          $pdf->SetFont('Arial','',12);
+          $pdf->Cell(98,7,date_format(new DateTime($data2['FECINICIO']),'d/m/y'),1,0,'C');
+          $pdf->Cell(98,7,date_format(new DateTime($data2['FECFIN']),'d/m/y'),1,1,'C');
+          $pdf->Cell(0,10,'',0,1,'L');
+          //Seccion integrantes de la actividad
+          $tsArray4 = $genPDF->getIntAct($data2['IDACTIVIDAD']);
+          $pdf->SetFont('Arial','B',16);
+          $pdf->Cell(0,10,'Integrantes de la actividad',0,1,'L');
+          if($tsArray4!=''){
+            $pdf->SetFont('Arial','B',14);
+            $pdf->Cell(196,7,'Nombre completo del integrante',1,1,'C');
+            $pdf->SetFont('Arial','',12);
+            foreach ($tsArray4 as $data3):
+              $pdf->Cell(196,7,'* '.$data3['NOMUSUARIO'].' '.$data3['APEPAT'].' '.$data3['APEMAT'],1,1,'C');
+            endforeach;
+          }
+          
+          $pdf->Cell(0,10,'',0,1,'L');
+        endforeach;        
+      }
+      else{
         $pdf->SetFont('Arial','B',16);
-        $pdf->Cell(70,10,'Nombre de la actividad '.$contador.': ',0,0,'L');
-        $pdf->SetFont('Arial','',14);
-        $pdf->Cell(0,10,$data2['NOMACTIVIDAD'],0,1,'L');
-        $pdf->SetFont('Arial','B',16);
-        $pdf->Cell(0,10,'Descripcion de la actividad: ',0,1,'L');
-        $pdf->SetFont('Arial','',14);
-        $pdf->Cell(0,5,$data2['DESCACT'],0,1,'L');
-        $pdf->Cell(0,5,'',0,1,'L');
-        //tabla de fechas de actividad
-        $pdf->SetFont('Arial','B',14);
-        $pdf->Cell(98,7,'Fecha de inicio de la actividad',1,0,'C');
-        $pdf->Cell(98,7,'Fecha de finalizacion de la actividad',1,1,'C');
-        $pdf->SetFont('Arial','',12);
-        $pdf->Cell(98,7,date_format(new DateTime($data2['FECINICIO']),'d/m/y'),1,0,'C');
-        $pdf->Cell(98,7,date_format(new DateTime($data2['FECFIN']),'d/m/y'),1,1,'C');
-        $pdf->Cell(0,10,'',0,1,'L');
-        //Seccion integrantes de la actividad
-        $tsArray4 = $genPDF->getIntAct($data2['IDACTIVIDAD']);
-        $pdf->SetFont('Arial','B',16);
-        $pdf->Cell(0,10,'Integrantes de la actividad',0,1,'L');
-        $pdf->SetFont('Arial','B',14);
-        $pdf->Cell(196,7,'Nombre completo del integrante',1,1,'C');
-        $pdf->SetFont('Arial','',12);
-        foreach ($tsArray4 as $data3):
-          $pdf->Cell(196,7,'* '.$data3['NOMUSUARIO'].' '.$data3['APEPAT'].' '.$data3['APEMAT'],1,1,'C');
-        endforeach;
-        $pdf->Cell(0,10,'',0,1,'L');
-      endforeach;      
+        $pdf->Cell(0,20,'No hay actividades registradas en este proyecto',0,1,'C');
+      }
+      
       $pdf->Output('','Informe de proyecto '.date('d/m/y'),true);
       //$this->view_page($pagina);
  }

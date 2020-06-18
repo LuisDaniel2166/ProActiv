@@ -201,7 +201,7 @@
                             <p><input type="date" id="start" name="trip-end" value="<?php echo $tsArray['FEFINPRO']?>" min="2020-06-19" max="2021-12-31"></p>
                             <p><button type="submit" class="btn btn-default" role="link" >Guardar Cambios</button></p>
                              </form>
-                             <p><a href="index.php?action=visualizarProyecto&idProy=<?php echo $tsArray['IDPROYECTO']?>">><button type="submit" name="editar" class="btn btn-default" role="link" onclick="'m.modificar_proyecto.php" >Cancelar</button></a></p>  
+                             <p><a href="index.php?action=visualizarProyecto&idProy=<?php echo $tsArray['IDPROYECTO']?>"><button type="submit" name="editar" class="btn btn-default" role="link" onclick="'m.modificar_proyecto.php" >Cancelar</button></a></p>  
 
 
 
