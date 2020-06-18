@@ -46,6 +46,10 @@ require 'app/model/seguridad.class.php';
   echo $mvc->crear_proyecto();
  }
 
+ else if ($_GET['action']=='crearAct'){
+    echo $mvc->crear_act($_GET['idProy']);
+   }
+
  else if ($_GET['action']=='miperfil'){
   echo $mvc->mi_perfil("",0);
  }
