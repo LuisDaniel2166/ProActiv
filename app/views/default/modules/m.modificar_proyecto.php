@@ -19,19 +19,10 @@
                            <input type="text" name="Desc_Pro" class="form-control" placeholder="Descripcion del proyecto" value="<?php echo $tsArray['DESCPROY']?>">
                             
                              
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
+
                             <form method="POST">
                             <h3>Seleccionar integrantes:</h3>
-=======
-=======
->>>>>>> parent of 202294c... cambios
-=======
->>>>>>> parent of 202294c... cambios
-                             
-                            <h3 = align="center" >Seleccionar integrantes:</h3>
->>>>>>> parent of 202294c... cambios
+
 
                             
 
