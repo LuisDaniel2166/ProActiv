@@ -30,9 +30,9 @@
                                     <td><?php echo $data['USUARIO']; ?></td>
                                 <!--  <input hidden="true" id="idusu" value=""></input>-->
                                     <td><a href="index.php?action=maneUsus&idusu=<?php include "app/model/mcript.php"; 
-                                    echo urlencode($encriptar($data['IDUSUARIO']));?>"><button type="submit" class="btn btn-default" role="link" >Ver informacion</button></a></td>
+                                    echo urlencode($encriptar($data['IDUSUARIO']));?>"><button type="submit" class="btn btn-default" role="link" >Ver perfil</button></a></td>
                                     <td><a href="index.php?action=editPer&idusu2=<?php include "app/model/mcript.php"; 
-                                    echo urlencode($encriptar($data['IDUSUARIO']));?>"><button type="submit" class="btn btn-default" role="link" >Editar informacion</button></a></td>
+                                    echo urlencode($encriptar($data['IDUSUARIO']));?>"><button type="submit" class="btn btn-default" role="link" >Administrar perfil</button></a></td>
                                   </tr>
               <?php endforeach;?>                
                                   </table>  

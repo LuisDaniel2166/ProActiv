@@ -50,7 +50,7 @@
             <h3>Descripción:</h3>
             <h4 style="color:#2C2C2C"><?php echo $tsArray['DESCPROY']?></h4>
             </div>
-            <p><a href="index.php?action=modProy&idProy=<?php echo $tsArray['IDPROYECTO'] ?>"><button type="submit" name="editar" class="btn btn-default" role="link" >Editar proyecto</button></a></p>
+            <p><a href="index.php?action=modProy&idProy=<?php echo $tsArray['IDPROYECTO'] ?>"><button type="submit" name="editar" class="btn btn-default" role="link" >Modificar proyecto</button></a></p>
             <p><a href="index.php?action=generarPDF&idProy=<?php echo $tsArray['IDPROYECTO'] ?>"><button type="submit" name="editar" class="btn btn-default" role="link" >Generar Informe </button></a></p>            
             
             <hr id="invis1" style="color:#2C2C2C">
@@ -62,7 +62,7 @@
                 <tr>
                 <td><?php echo $data2['NOMACTIVIDAD']?></td>
                 <td><?php echo $data2['DESCACT']?></td>
-                <td><a href="index.php?action=verActividad&idAct=<?php echo $data2['IDACTIVIDAD']?>"><button type="submit" name="editar" class="btn btn-default" role="link" >Ver actividad</button></a></td> 
+                <td><a href="index.php?action=verActividad&idAct=<?php echo $data2['IDACTIVIDAD']?>"><button type="submit" name="editar" class="btn btn-default" role="link" >Visualizar actividad</button></a></td> 
                 </tr>
                 <?php endforeach; ?>
                 <h3 style="color:#2C2C2C">Descripción de las actividades</h3>
@@ -71,7 +71,7 @@
                 else {
                     echo('<h3>No hay actividades registradas en el proyecto</h3>');
                 }?>
-            <p><a href="index.php?action=crearAct&idProy=<?php echo $tsArray['IDPROYECTO'] ?>"><button type="submit" name="crear" class="btn btn-default" role="link" >Agregar actividad</button></a></p>
+            <p><a href="index.php?action=crearAct&idProy=<?php echo $tsArray['IDPROYECTO'] ?>"><button type="submit" name="crear" class="btn btn-default" role="link" >Crear actividad</button></a></p>
             
                                 <!--<p><input type="date" id="start" name="trip-start" value="2018-07-22" min="2018-01-01" max="2018-12-31"></p>-->
     </div><!-- end container -->

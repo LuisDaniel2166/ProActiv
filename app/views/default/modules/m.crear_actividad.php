@@ -13,10 +13,10 @@
 <section class="section">
     <div class="container">
     <form method="post" action="index.php?action=crearActividad">
-                    <input  type="text" name="idProyecto" value="<?php echo $id[1];?>" class="form-control">
+                    <input  type="hidden" name="idProyecto" value="<?php echo $id[1];?>" class="form-control">
                     <h3>Nombre de la actividad:</h3>
                     <input type="text" name="nombre_act" class="form-control" placeholder="Nombre de la actividad" required="true">
-                    <h3>Descripcion de la actividad:</h3>
+                    <h3>Descripción de la actividad:</h3>
                     <input type="text" name="desc_act" class="form-control" placeholder="Descripción de la actividad">
                     <?php $date = date("Y-m-d");?>
                     <h4>Fecha de inicio:</h4>

@@ -3,7 +3,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="tagline-message">
-                            <h3>Editar informacion</h3>
+                            <h3>Administrar perfil</h3>
                         </div>
                     </div><!-- end col -->
                 </div><!-- end row -->
@@ -29,7 +29,7 @@
                             </select>
                             <h3>Nombre de usuario:</h3>
                             <input type="text" name="nomus" class="form-control" placeholder="Nombre de usuario" value=<?php echo $data['USUARIO']; ?>>
-                             <h3>Telefono:</h3>
+                             <h3>Teléfono:</h3>
                             <input type="text" name="tel" class="form-control" placeholder="Telefono" value=<?php echo $data['TELEFONO']; ?>>
                             <h3>Correo:</h3>
                             <input type="text" name="correo" class="form-control" placeholder="Correo" value=<?php echo $data['CORREO']; ?>>
