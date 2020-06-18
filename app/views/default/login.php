@@ -41,7 +41,7 @@
             <div class="overlay"></div>
             <div class="home-text-wrapper relative container" style="color: BBBBBB">
                 <div class="home-message">
-                    <img src="app/views/default/images/sopa.png" alt="" width="200" height="200">
+                    <img src="app/views/default/images/ProActiv.png" alt="" width="200" height="200">
                     <p>Bienvenido a ProActiv</p>
                     <form method="post" action="index.php?action=login">
                         <div class="btn-wrapper">

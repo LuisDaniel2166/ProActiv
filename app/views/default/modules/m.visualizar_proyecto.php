@@ -50,8 +50,9 @@
             <h3>Descripción:</h3>
             <h4 style="color:#2C2C2C"><?php echo $tsArray['DESCPROY']?></h4>
             </div>
-            <p><a href="index.php?action=modProy&idProy=<?php echo $tsArray['IDPROYECTO'] ?>"><button type="submit" name="editar" class="btn btn-default" role="link" >Editar proyecto</button></a></p>            
-            <p><button type="submit" name="editar" class="btn btn-default" role="link" onclick="window.location='index.php?action=genPDF$idProy=<?php echo $tsArray['IDPROYECTO'] ?>'">Generar pdf</button></p>
+            <p><a href="index.php?action=modProy&idProy=<?php echo $tsArray['IDPROYECTO'] ?>"><button type="submit" name="editar" class="btn btn-default" role="link" >Editar proyecto</button></a></p>
+            <p><a href="index.php?action=generarPDF&idProy=<?php echo $tsArray['IDPROYECTO'] ?>"><button type="submit" name="editar" class="btn btn-default" role="link" >Generar Informe </button></a></p>            
+            
             <hr id="invis1" style="color:#2C2C2C">
         <!--Tabla de actividades-->
         <?php if ($tsArray3!=''){?>

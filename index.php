@@ -26,8 +26,8 @@ require 'app/model/seguridad.class.php';
   echo $mvc->visualizar_proyectos();
  }
  //Generar pdf
- else if ($_GET['action']=='genPDF'){
-  echo $mvc->generarInforme_pdf(1);
+ else if ($_GET['action']=='generarPDF'){
+  echo $mvc->generarInforme_pdf($_GET['idProy']);
  }
 
  else if ($_GET['action']=='visualizarProyecto'){
