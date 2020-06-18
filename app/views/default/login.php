@@ -46,15 +46,20 @@
                     <form method="post" action="index.php?action=login">
                         <div class="btn-wrapper">
                             <div class="text-left">
-                                #ERROR_LOGIN#
-                                <div style="padding-left: 400px">
-                                    <label for="usuario" style="color: white">Usuario</label> 
-                                    <input name="usuario" type="text" id="usuario" placeholder="Usuario" style="color: black"></p>
-                                    <label for="Contraseña" style="color: white">Contraseña</label> 
+                                <div class="text-center">
+                                    #ERROR_LOGIN#
+                                </div>    
+                                <div style="padding-left: 380px">
+                                    <label for="usuario" style="color: white">Usuario: </label> 
+                                    <input name="usuario" type="text" id="usuario" placeholder="Usuario" style="color: black; margin-right: 40px;"></p>
+                                    <label for="Contraseña" style="color: white">Contraseña: </label> 
                                     <input name="contraseña" type="password" id="contraseña" placeholder="Contraseña" style="color: black"></p>
                                     
                                 </div>
+                                <div class="text-center">
                                 <input type="submit" class="btn btn-primary" value="Iniciar Sesión" style="text-align: center"></input>
+                                </div>
+                                
                         </div><!-- end row -->
                     </form>
                 </div>
