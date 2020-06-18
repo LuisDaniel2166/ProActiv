@@ -90,39 +90,6 @@ class proyectos extends database{
         return $data;
         mysqli_close($link);
     }
-
-
-
-    function MODPROYDATOS($datos,$datos1,$datos2){
-        //Abrimos la conexion
-        $link = $this->conectar();
-        $tamaño = count($datos1);
-        //Guardamos el query a ejecutar
-            foreach ($datos1 as $key => $data) {
-                $query2 = 'select * from usuario_proyecto where IDPROYECTO ='.$datos['id'].' &&  IDUSUARIO='.$data;
-                
-                $result = mysqli_query($link,$query2); 
-                if(mysqli_num_rows($result)>=1){
-                return false;
-                }
-            
-
-            }
-
-
-        $query = 'UPDATE proyecto SET NOMPROY = "'.$datos['Proyecto'].'", DESCPROY = "'.$datos['Desc'].'", FEINIPRO = "'.$datos['fechaIni'].'", FEFINPRO = "'.$datos['fechaFin'].'", ESTADO = "A" WHERE proyecto.IDPROYECTO = '.$datos['id'];
-        //Ejecutamos el query
-        
-        mysqli_query($link,$query);
-        for ($i=0; $i < $tamaño ; $i++) { 
-        $query3 = 'INSERT INTO usuario_proyecto (IDUSUARIO, IDPROYECTO, USUROL) VALUES ("'.$datos1[$i].'", "'.$datos['id'].'", "'.$datos2[$i].'")';
-         mysqli_query($link,$query3);       
-        }
-        return true;
-        mysqli_close($link);
-    }
-
-
     function getIntAct($idActividad){
         $link = $this->conectar();
         $query = "SELECT * FROM usuario u INNER JOIN usuario_actividad ua on (u.IDUSUARIO=ua.IDUSUARIO) WHERE ua.IDACTIVIDAD =".$idActividad;

@@ -13,7 +13,11 @@
         <section class="section">
             <div class="container">
                             <h3>Nombre del proyecto:</h3>
+<<<<<<< HEAD
                             <input type="text" name="nombre_act" class="form-control" placeholder="Nombre del proyectp" value="Actividad 1">
+=======
+                            <input type="text" name="nombre_act" class="form-control" placeholder="Nombre de la actividad" value="Actividad 1">
+>>>>>>> parent of 699ad42... Merge branch 'Fer' into Dani
                             <h3>Descripcion del proyecto:</h3>
                            - <textarea type="text" class="form-control" placeholder="Descripcion de la actividad">Descripcion de la actividad 1</textarea>
                             
