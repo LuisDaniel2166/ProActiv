@@ -9,8 +9,8 @@
                     <div class="col-lg-9 col-md-9 text-right">
                         <div class="cop-links">
                             <ul class="list-inline">
-                                <li>&copy; 2019 S.O.P.A (Sistema Organizador de Proyectos y Actividades) </li>
-                                <li>Versión: Pre-Alpha</li>
+                                <li>&copy; 2020 ProActiv (Proyectos y Actividades) </li>
+                                <li>Versión: Beta</li>
                             </ul>
                         </div>
                     </div>
