@@ -58,6 +58,11 @@
         <?php if ($tsArray3!=''){?>
             <table class="table" width="100%" heigth="90px">
                 <h3 style="color:#2C2C2C">Actividades del proyecto:</h3>
+                <tr>
+                <td>Nombre de la actividad</td>
+                <td>Descripción de la actividad</td>
+                <td></td>
+                </tr>
                 <?php foreach($tsArray3 as $data2):?>
                 <tr>
                 <td><?php echo $data2['NOMACTIVIDAD']?></td>
@@ -65,7 +70,7 @@
                 <td><a href="index.php?action=verActividad&idAct=<?php echo $data2['IDACTIVIDAD']?>"><button type="submit" name="editar" class="btn btn-default" role="link" >Visualizar actividad</button></a></td> 
                 </tr>
                 <?php endforeach; ?>
-                <h3 style="color:#2C2C2C">Descripción de las actividades</h3>
+                
             </table>
                 <?php }
                 else {
