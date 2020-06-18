@@ -90,9 +90,7 @@ class proyectos extends database{
         return $data;
         mysqli_close($link);
     }
-
-
-
+    
     function MODPROYDATOS($datos,$datos1,$datos2){
         //Abrimos la conexion
         $link = $this->conectar();

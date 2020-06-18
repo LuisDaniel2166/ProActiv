@@ -111,6 +111,7 @@ require 'app/model/seguridad.class.php';
     echo $mvc->editP($datos1);
      
  }
+ 
 else if($_GET['action']=='modPro'){
     $Texto_ID = $_POST['TextoID'];
     $ArrayID = explode(',', $Texto_ID);
