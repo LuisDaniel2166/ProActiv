@@ -1,4 +1,4 @@
-<div class="section bgcolor noover">
+ <div class="section bgcolor noover">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
@@ -14,7 +14,7 @@
             <div class="container">
                 <div class="row">
                     
-                    <?php //llenado de datos mediante PHP
+                    <?php //ldap_get_values_len(link_identifier, result_entry_identifier, attribute)ado de datos mediante PHP
                     foreach ($tsArray as $data): ?>
                     <div class="col-lg-4 col-md-12">
                         <div class="service-box m30">
@@ -24,7 +24,7 @@
                             <p style="font-weight: bold; color: black;">Fecha de finalizacion:</p>
                             <p style="color:#2C2C2C"><?php $date= new DateTime($data['FEFINPRO']);
                                                             echo date_format($date,'d/m/Y'); ?></p>
-                            <p><button type="submit" class="btn btn-default">Ver proyecto</button></p>
+                            <p><a href="index.php?action=visualizarProyecto&idProy=<?php echo $data['IDPROYECTO']?>"><button type="submit" class="btn btn-default">Ver proyecto</button></a></p>
                         </div>
                     </div><!-- end col -->
                     <?php endforeach; ?>

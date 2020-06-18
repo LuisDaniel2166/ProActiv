@@ -1,7 +1,9 @@
 <?php
 require 'app/model/db.class.php';
 require 'app/model/proyectos.class.php';
+require 'app/model/Usuarios.class.php';
 require 'app/model/fpdf/fpdf.php';
+require 'app/model/actividades.class.php';
 session_start();
 class mvc_controller {
 
@@ -116,13 +118,79 @@ class mvc_controller {
     $tsArray = $visProy->getInfPro($idProyecto);
     $tsArray2 = $visProy->getIntPro($idProyecto);
     $tsArray3 = $visProy->getActInf($idProyecto);
-    if($tsArray!='' && $tsArray2!='' && $tsArray3!=''){
+    if($tsArray!='' ){
       include 'app/views/default/modules/m.visualizar_proyecto.php'; 
       $table = ob_get_clean();
       $pagina = $this->replace_content('/\#CONTENIDO\#/ms' ,$table, $pagina);
     }
     else{
       $pagina = $this->replace_content('/\#CONTENIDO\#/ms' ,'<h1>No hay informacion del proyecto solicitado (Error)</h1>' , $pagina);
+    }
+    $this->view_page($pagina);
+ }
+
+ function visualizar_actividad($idAct){
+  $visActv = new actividades();
+  $seguridad = new seguridad;
+  $seguridad->set_session_form('actividad');
+  $pagina=$this->load_template('Actividad');
+  ob_start();
+    $tsArray = $visActv->getInfAct($idAct);
+    $tsArray2 = $visActv->getIntAct($idAct);
+    if($tsArray !=''){
+      include 'app/views/default/modules/m.visualizar_actividad.php';  
+      $table = ob_get_clean();
+      $pagina = $this->replace_content('/\#CONTENIDO\#/ms' ,$table, $pagina);
+    }
+    else{
+      $pagina = $this->replace_content('/\#CONTENIDO\#/ms' ,'<h1>No hay informacion de la actividad solicitada (Error)</h1>' , $pagina);
+    }
+    $this->view_page($pagina);
+ }
+
+ function crear_proyecto(){
+  $seguridad= new seguridad;
+  $seguridad->set_session_form('crear_proyecto');
+  $pagina=$this->load_template('crear_proyecto');
+  ob_start();
+  include 'app/views/default/modules/m.crear_proyecto.php';
+  $datos = ob_get_clean();
+  $pagina = $this->replace_content('/\#CONTENIDO\#/ms' ,$datos, $pagina); 
+  $this->view_page($pagina); 
+ }
+
+ function crearProy($Bdatos){
+  $crearProy=new proyectos();
+   if($crearProy->crearProyecto($Bdatos,$_SESSION['ID_USUARIO'])==false){
+     echo'<script type="text/javascript">
+      alert("El proyecto que gusta agregar ya existe");
+      window.location.href="index.php?action=crearProyecto";
+      </script>';   
+   }
+   else{
+    echo'<script type="text/javascript">
+      alert("Proyecto creado con exito");
+      window.location.href="index.php?";
+      </script>';    
+   }
+ }
+
+ function modificar_proyecto($idProyecto){
+  $modProy = new proyectos();
+  $usuarios = new Usuarios();
+  $seguridad = new seguridad;
+  $seguridad->set_session_form('modificar_proyecto');
+  $pagina=$this->load_template('Modificar Proyecto');
+  ob_start();
+    $tsArray = $modProy->getInfPro($idProyecto);
+    $tsArray2 = $usuarios->Usu();
+    if($tsArray!='' && $tsArray2!=''){
+      include 'app/views/default/modules/m.modificar_proyecto.php'; 
+      $datos = ob_get_clean();
+      $pagina = $this->replace_content('/\#CONTENIDO\#/ms' ,$datos, $pagina); 
+    }
+    else{
+      $pagina = $this->replace_content('/\#CONTENIDO\#/ms' ,'<h1>error al mostrar el proyecto</h1>' , $pagina);
     }
     $this->view_page($pagina);
  }
@@ -272,6 +340,23 @@ function aUsu($Bdatos){
      </script>';     
   }
 }
+
+function FmodProy($Bdatos,$Datos1,$Datos2){
+ $FmodProy=new Proyectos();
+  if($FmodProy->MODPROYDATOS($Bdatos,$Datos1,$Datos2)==false){
+    echo'<script type="text/javascript">
+     alert("Error al actualizar el proyecto");
+     window.location.href="index.php?action=vaUsu";
+     </script>';   
+  }
+  else{
+   echo'<script type="text/javascript">
+     alert("El proyecto se ha ejecutado correctamente");
+     window.location.href="index.php?";
+     </script>';     
+  }
+}
+
 //
 function editP($Bdatos){
  $usu=new Usuarios();

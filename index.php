@@ -34,9 +34,22 @@ require 'app/model/seguridad.class.php';
   echo $mvc->visualizar_proyecto($_GET['idProy']);
  }
 
+ else if ($_GET['action']=='verActividad'){
+  echo $mvc->visualizar_actividad($_GET['idAct']);
+ }
+
+  else if ($_GET['action']=='modProy'){
+  echo $mvc->modificar_proyecto($_GET['idProy']);
+ }
+
+ else if ($_GET['action']=='crearProyecto'){
+  echo $mvc->crear_proyecto();
+ }
+
  else if ($_GET['action']=='miperfil'){
   echo $mvc->mi_perfil("",0);
  }
+
  else if ($_GET['action']=='maneUsus'){
         include "app/model/mcript.php"; 
         echo $mvc->mi_perfil(urldecode($desencriptar($_GET['idusu'])),0);
@@ -66,6 +79,17 @@ require 'app/model/seguridad.class.php';
       ];
      echo $mvc->aUsu($datos);
  }
+
+ else if($_GET['action']=='crearProy'){
+  $datos=[
+      'nombre_proy'=> $_POST['nombre_proy'],
+      'desc_proy'=>$_POST['desc_proy'],
+      'fec_ini'=>$_POST['fec_ini'],
+      'fec_fin'=>$_POST['fec_fin'],
+  ];
+ echo $mvc->crearProy($datos);
+}
+
  else if($_GET['action']=='eper'){
      $datos1=[
           'nombre'=> $_POST['nom'],
@@ -81,6 +105,23 @@ require 'app/model/seguridad.class.php';
           'id'=>$_POST['id'],
       ];
     echo $mvc->editP($datos1);
+     
+ }
+else if($_GET['action']=='modPro'){
+    $Texto_ID = $_POST['TextoID'];
+    $ArrayID = explode(',', $Texto_ID);
+    $TextoRol = $_POST['TextoRoles'];
+    $ArrayRol= explode(',', $TextoRol);
+
+     $datos1=[
+         'id' => $_POST['TextoIDProyecto'],
+         'Proyecto' => $_POST['nombre_Pro'],
+         'Desc' => $_POST['Desc_Pro'],
+         'fechaIni' => $_POST['trip-start'],
+         'fechaFin' => $_POST['trip-end']                 
+          
+      ];
+    echo $mvc->FmodProy($datos1,$ArrayID,$ArrayRol);
      
  }
  else if(isset($_SESSION['USUARIO']))//muestra la pantalla princripal
