@@ -100,18 +100,23 @@ class proyectos extends database{
         
         //Guardamos el query a ejecutar
                 if ($datos1!=''){
+                    $CONTADOR=-1;
                     foreach ($datos1 as $key => $data) {
+                        $CONTADOR++;
                         if($data!=''){
                             $query2 = 'select * from usuario_proyecto where IDPROYECTO ='.$datos['id'].' &&  IDUSUARIO='.$data;
                             $result = mysqli_query($link,$query2); 
                             if(mysqli_num_rows($result)>=1){
+                            
+                            }
+                            else{
+                                    $query3 = 'INSERT INTO usuario_proyecto (IDUSUARIO, IDPROYECTO, USUROL) VALUES ("'.$data.'", "'.$datos['id'].'", "'.$datos2[$CONTADOR].'")';
+                                     mysqli_query($link,$query3);       
+                                    
                             }
                         }   
                     }
-                    for ($i=0; $i < $tamaño ; $i++) { 
-                        $query3 = 'INSERT INTO usuario_proyecto (IDUSUARIO, IDPROYECTO, USUROL) VALUES ("'.$datos1[$i].'", "'.$datos['id'].'", "'.$datos2[$i].'")';
-                         mysqli_query($link,$query3);       
-                        }
+                    
                 }
                 
             
