@@ -39,19 +39,22 @@
 
         <div id="home" class="js-height-full">
             <div class="overlay"></div>
-            <div class="home-text-wrapper relative container">
+            <div class="home-text-wrapper relative container" style="color: BBBBBB">
                 <div class="home-message">
                     <img src="app/views/default/images/sopa.png" alt="" width="200" height="200">
                     <p>Bienvenido a ProActiv</p>
                     <form method="post" action="index.php?action=login">
                         <div class="btn-wrapper">
-                            <div class="text-center">
+                            <div class="text-left">
                                 #ERROR_LOGIN#
-                                <label for="usuario" style="color: white">Usuario</label> 
-                                <input name="usuario" type="text" id="usuario" placeholder="Usuario" style="color: black"></p>
-                                <label for="Contraseña" style="color: white">Contraseña</label> 
-                                <input name="contraseña" type="password" id="contraseña" placeholder="Contraseña" style="color: black"></p>
-                                <input type="submit" class="btn btn-primary" value="Iniciar Sesión"></input>
+                                <div style="padding-left: 400px">
+                                    <label for="usuario" style="color: white">Usuario</label> 
+                                    <input name="usuario" type="text" id="usuario" placeholder="Usuario" style="color: black"></p>
+                                    <label for="Contraseña" style="color: white">Contraseña</label> 
+                                    <input name="contraseña" type="password" id="contraseña" placeholder="Contraseña" style="color: black"></p>
+                                    
+                                </div>
+                                <input type="submit" class="btn btn-primary" value="Iniciar Sesión" style="text-align: center"></input>
                         </div><!-- end row -->
                     </form>
                 </div>

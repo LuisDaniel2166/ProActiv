@@ -19,8 +19,10 @@
                            <input type="text" name="Desc_Pro" class="form-control" placeholder="Descripcion del proyecto" value="<?php echo $tsArray['DESCPROY']?>">
                             
                              
-                             
-                            <h3 = align="center" >Seleccionar integrantes:</h3>
+
+                            <form method="POST">
+                            <h3>Seleccionar integrantes:</h3>
+
 
                             
 
@@ -205,7 +207,7 @@
                             <p><input type="date" id="start" name="trip-start" value="<?php echo $tsArray['FEINIPRO']?>" min="2020-06-18" max="2021-12-31"></p>
                             <h4>Fecha de finalización:</h4>
                             <p><input type="date" id="start" name="trip-end" value="<?php echo $tsArray['FEFINPRO']?>" min="2020-06-19" max="2021-12-31"></p>
-                            <p><button type="submit" class="btn btn-default" role="link" onclick="window.location='mis_actividades.html'">Guardar Cambios</button></p>
+                            <p><button type="submit" class="btn btn-default" role="link" >Guardar Cambios</button></p>
                              </form>
                              <p><a href="index.php?action=visualizarProyecto&idProy=<?php echo $tsArray['IDPROYECTO']?>">><button type="submit" name="editar" class="btn btn-default" role="link" onclick="'m.modificar_proyecto.php" >Cancelar</button></a></p>  
 
