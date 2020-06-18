@@ -45,9 +45,9 @@
 
                             <!-- Metodo para la creación de la tabla dinámica -->
                             
-                                 <input type="text"name = "TextoID" id="result" size="20"  placeholder ="" value = ""  >
-                                 <input type="text"name = "TextoRoles" id="idTextoRoles" size="20"  placeholder ="" value = "" >
-                                 <input type="text"name = "TextoIDProyecto" id="idTextoRoles" size="20"  placeholder ="" value = "<?php echo $tsArray['IDPROYECTO']?>">
+                                 <input type="hidden"name = "TextoID" id="result" size="20"  placeholder ="" value = ""  >
+                                 <input type="hidden"name = "TextoRoles" id="idTextoRoles" size="20"  placeholder ="" value = "" >
+                                 <input type="hidden"name = "TextoIDProyecto" id="idTextoRoles" size="20"  placeholder ="" value = "<?php echo $tsArray['IDPROYECTO']?>">
                                   <table>
                                     <tr>
                                         <th>#</th>

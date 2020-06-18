@@ -1,6 +1,6 @@
 <nav class="nav-menu">
                     <div class="logo">
-                        <a href="inicio.html"><img src="app/views/default/images/logo-normal.png" alt="" width="50%" height="50%"></a>
+                        <a href="index.php?"><img src="app/views/default/images/logo-normal.png" alt="" width="50%" height="50%"></a>
                     </div><!-- end logo -->
 
                     <div class="margin-block"></div>
@@ -21,7 +21,7 @@
                                 </ul>
                             </div>
                         </li>
-                        <li><a href="?action=logout">Cerrar sesion <i class="fa fa-angle-right"></i></a></li>
+                        <li><a href="?action=logout">Cerrar sesión <i class="fa fa-angle-right"></i></a></li>
                     </ul>
                     
                     <div class="margin-block"></div>

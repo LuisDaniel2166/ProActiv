@@ -3,7 +3,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="tagline-message">
-                            <h3>Agregar Perfil</h3>
+                            <h3>Agregar usuario</h3>
                         </div>
                     </div><!-- end col -->
                 </div><!-- end row -->
@@ -28,9 +28,9 @@
                             </select>
                             <h3>Nombre de usuario:</h3>
                             <input type="text" name="nomus" class="form-control" placeholder="Nombre de usuario" required="true">
-                            <h3>Telefono:</h3>
+                            <h3>Teléfono:</h3>
                             <input type="text" name="tel" class="form-control" placeholder="Telefono">
-                            <h3>Correo Electronico:</h3>
+                            <h3>Correo Electrónico:</h3>
                             <input type="text" name="correo" class="form-control" placeholder="Correo electronico">
                             <h3>Contraseña:</h3>
                             <input type="password" name="pass" class="form-control" placeholder="Contraseña" required="true" >
@@ -38,7 +38,7 @@
                             <p>
                                 <select name="tip">
 	                            	<option value="A">Administrador</option>
-	                              	<option value="N">Estandar</option>
+	                              	<option value="N">Estándar</option>
 	                        </select>
                             </p>
                             <p><button type="submit" class="btn btn-default" role="link">Agregar usuario</button></p>

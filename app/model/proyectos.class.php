@@ -97,30 +97,34 @@ class proyectos extends database{
         //Abrimos la conexion
         $link = $this->conectar();
         $tamaño = count($datos1);
+        
         //Guardamos el query a ejecutar
-            if($datos1!=''){
-                foreach ($datos1 as $key => $data) {
-                    $query2 = 'select * from usuario_proyecto where IDPROYECTO ='.$datos['id'].' &&  IDUSUARIO='.$data;
-                    $result = mysqli_query($link,$query2); 
-                    if(mysqli_num_rows($result)>=1){
-                    return false;
+                if ($datos1!=''){
+                    foreach ($datos1 as $key => $data) {
+                        if($data!=''){
+                            $query2 = 'select * from usuario_proyecto where IDPROYECTO ='.$datos['id'].' &&  IDUSUARIO='.$data;
+                            $result = mysqli_query($link,$query2); 
+                            if(mysqli_num_rows($result)>=1){
+                            }
+                        }   
                     }
+                    for ($i=0; $i < $tamaño ; $i++) { 
+                        $query3 = 'INSERT INTO usuario_proyecto (IDUSUARIO, IDPROYECTO, USUROL) VALUES ("'.$datos1[$i].'", "'.$datos['id'].'", "'.$datos2[$i].'")';
+                         mysqli_query($link,$query3);       
+                        }
                 }
-            }
+                
+            
             
 
 
         $query = 'UPDATE proyecto SET NOMPROY = "'.$datos['Proyecto'].'", DESCPROY = "'.$datos['Desc'].'", FEINIPRO = "'.$datos['fechaIni'].'", FEFINPRO = "'.$datos['fechaFin'].'", ESTADO = "A" WHERE proyecto.IDPROYECTO = '.$datos['id'];
-        echo $query; 
         //Ejecutamos el query
         
         mysqli_query($link,$query);
-        if($datos1!=''){
-            for ($i=0; $i < $tamaño ; $i++) { 
-                $query3 = 'INSERT INTO usuario_proyecto (IDUSUARIO, IDPROYECTO, USUROL) VALUES ("'.$datos1[$i].'", "'.$datos['id'].'", "'.$datos2[$i].'")';
-                 mysqli_query($link,$query3);       
-                }
-        }
+
+            
+
         return true;
         mysqli_close($link);
     }

@@ -19,12 +19,12 @@
                     <div class="col-lg-4 col-md-12">
                         <div class="service-box m30">
                             <h3 style="font-weight: bold"><?php echo $data['NOMPROY']?></h3>
-                            <p style="font-weight: bold; color: black;">Descripcion del proyecto:</p>
+                            <p style="font-weight: bold; color: black;">Descripción del proyecto:</p>
                             <p style="color:#2C2C2C"><?php echo $data['DESCPROY']?></p>
-                            <p style="font-weight: bold; color: black;">Fecha de finalizacion:</p>
+                            <p style="font-weight: bold; color: black;">Fecha de finalización:</p>
                             <p style="color:#2C2C2C"><?php $date= new DateTime($data['FEFINPRO']);
                                                             echo date_format($date,'d/m/Y'); ?></p>
-                            <p><a href="index.php?action=visualizarProyecto&idProy=<?php echo $data['IDPROYECTO']?>"><button type="submit" class="btn btn-default">Ver proyecto</button></a></p>
+                            <p><a href="index.php?action=visualizarProyecto&idProy=<?php echo $data['IDPROYECTO']?>"><button type="submit" class="btn btn-default">Visualizar proyecto</button></a></p>
                         </div>
                     </div><!-- end col -->
                     <?php endforeach; ?>
@@ -42,7 +42,7 @@
                                 <table class="table" width="100%" heigth="70px">
                                   <tr>
                                     <td style="color:#2C2C2C">Nombre del proyecto</td>
-                                    <td style="color:#2C2C2C">Descripcion del proyecto</td>
+                                    <td style="color:#2C2C2C">Descripción del proyecto</td>
                                     <td style="color:#2C2C2C">Fecha de finalización</td>
                                     <td style="color:#2C2C2C">Estado</td>
                                     <td></td>
@@ -56,7 +56,7 @@
                                                                     echo date_format($date,'d/m/Y'); ?></td>
                                     <td style="color:#2C2C2C"><?php if($data['ESTADO']=='A'){echo 'Activo';}
                                                                     else{echo 'Finalizado';}?></td>
-                                    <td style="color:#2C2C2C"><p><a href="index.php?action=visualizarProyecto&idProy=<?php echo $data['IDPROYECTO']?>"><button type="submit" class="btn btn-default">Ver proyecto</button></a></p></td>
+                                    <td style="color:#2C2C2C"><p><a href="index.php?action=visualizarProyecto&idProy=<?php echo $data['IDPROYECTO']?>"><button type="submit" class="btn btn-default">Visualizar proyecto</button></a></p></td>
                                   </tr>
                                   <?php endforeach;?>
                                 </table>

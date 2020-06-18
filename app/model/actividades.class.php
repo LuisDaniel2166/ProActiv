@@ -37,7 +37,6 @@ class actividades extends database {
 		$link = $this -> conectar();
 		$query = $link = $this -> conectar();
 		$query = "SELECT * FROM actividad WHERE IDACTIVIDAD=" . $IDACTIVIDAD."";
-		echo $query;
 		$result = mysqli_query($link, $query);	
 		$tsArray = mysqli_fetch_assoc($result);
 		return $tsArray;
@@ -66,7 +65,6 @@ class actividades extends database {
 	function insActividad($datos,$idUsr){
         $link = $this->conectar();
         $query = 'SELECT * FROM actividad where NOMACTIVIDAD = "'.$datos['nombre_act'].'"';
-        echo $query;
         $result = mysqli_query($link,$query);
 
           if(mysqli_num_rows($result)>=1){
@@ -113,7 +111,8 @@ class actividades extends database {
 
             }
         $query = 'UPDATE actividad SET NOMACTIVIDAD = "'.$datos['Actividad'].'", DESCACT = "'.$datos['Desc'].'", FECINICIO = "'.$datos['fechaIni'].'", FECFIN = "'.$datos['fechaFin'].'" WHERE actividad.IDACTIVIDAD = '.$datos['id'];
-        mysqli_query($link,$query);  
+		mysqli_query($link,$query); 
+		return true; 
       	
 
         //Ejecutamos el query

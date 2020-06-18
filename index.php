@@ -42,9 +42,11 @@ require 'app/model/seguridad.class.php';
   echo $mvc->modificar_proyecto($_GET['idProy']);
  }
 
-  else if ($_GET['action']=='editAct'){
+ else if ($_GET['action']=='editAct'){
   echo $mvc->modificar_actividad($_GET['idAct']);
  }
+
+
 
  else if ($_GET['action']=='crearProyecto'){
   echo $mvc->crear_proyecto();

@@ -3,7 +3,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="tagline-message">
-                            <h3>Editar Actividad</h3>
+                            <h3>Modificar Actividad</h3>
                         </div>
                     </div><!-- end col -->
                 </div><!-- end row -->
@@ -15,7 +15,7 @@
                             <form method="post" action="index.php?action=modAct">
                             <h3>Nombre de la actividad:</h3>
                             <input type="text" name="nombre_Act" class="form-control" placeholder="Nombre de la actividad" value="<?php echo $tsArray['NOMACTIVIDAD']?>">
-                            <h3>Descripcion de la actividad:</h3>
+                            <h3>Descripción de la actividad:</h3>
                            <input type="text" name="Desc_Act" class="form-control" placeholder="Descripcion de la actividad" value="<?php echo $tsArray['DESCACT']?>">
                             
                              
@@ -167,7 +167,7 @@
                             <p><input type="date" id="start" name="trip-end" value="<?php echo $tsArray['FECFIN']?>" min="2020-06-19" max="2021-12-31"></p>
                             <p><button type="submit" class="btn btn-default" role="link" >Guardar Cambios</button></p>
                             </form>
-                             <p><a href="index.php?action=  Proyecto&idProy=<?php echo $tsArray['IDPROYECTO']?>">><button type="submit" name="editar" class="btn btn-default" role="link" onclick="'m.modificar_proyecto.php" >Cancelar</button></a></p>  
+                             <p><a href="index.php?action=  Proyecto&idProy=<?php echo $tsArray['IDPROYECTO']?>"><button type="submit" name="editar" class="btn btn-default" role="link" onclick="'m.modificar_proyecto.php" >Cancelar</button></a></p>  
 
 
 

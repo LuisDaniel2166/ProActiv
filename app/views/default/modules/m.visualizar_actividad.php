@@ -41,12 +41,12 @@
                        echo date_format($date,'d/m/Y');?>
 		</p>
 		<!--Fecha de finalizacion-->
-		<h3>Fecha de finalizacion de la Actividad:</h3>
+		<h3>Fecha de finalización de la Actividad:</h3>
 		<p style="color:#2C2C2C">
 			<?php $date1= new DateTime($tsArray['FECFIN']);
                        echo date_format($date1,'d/m/Y');?>
 		</p>
-		<h3>Descripcion:</h3>
+		<h3>Descripción:</h3>
 		<!--Descripcion-->
 		<p style="color:#2C2C2C">
 			<?php echo $tsArray['DESCACT']?>
@@ -55,7 +55,7 @@
 		<p>
 			
 			<button method='post' type="submit" name="btn_editar" onclick="window.location='index.php?action=editAct&idAct=<?php echo $tsArray['IDACTIVIDAD'];?>'" class="btn btn-default">
-				Editar actividad
+				Modificar actividad
 			</button>
 		</p>
 

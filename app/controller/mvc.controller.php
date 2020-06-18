@@ -163,7 +163,7 @@ class mvc_controller {
   $crearProy=new proyectos();
    if($crearProy->crearProyecto($Bdatos,$_SESSION['ID_USUARIO'])==false){
      echo'<script type="text/javascript">
-      alert("El proyecto que gusta agregar ya existe");
+      alert("El proyecto que desea agregar ya existe");
       window.location.href="index.php?action=crearProyecto";
       </script>';   
    }
@@ -212,21 +212,22 @@ class mvc_controller {
    if($crearAct->insActividad($Bdatos,$_SESSION['ID_USUARIO'])==false){
      echo'<script type="text/javascript">
       alert("La actividad que gusta agregar ya existe");
-      window.location.href="index.php?action=crearAct&idProy=<?php echo $Bdatos['.'idProyecto'.']?>";
+      window.location.href="index.php?action=crearAct&idProy='.($Bdatos['idProyecto']).'";
       </script>';   
    }
    else{
     echo'<script type="text/javascript">
       alert("Actividad creada con exito");
-      window.location.href="index.php?";
+      window.location.href="index.php?action=visualizarProyecto&idProy='.($Bdatos['idProyecto']).'";
       </script>';    
    }
+  }
   function modificar_actividad($IDACTIVIDAD){
   $modAct = new actividades();
   $usuarios = new Usuarios();
   $seguridad = new seguridad;
   $seguridad->set_session_form('modificar_actividad');
-  $pagina=$this->load_template('Modificar Actividad');
+  $pagina=$this->load_template('modificar Actividad');
   ob_start();
     $tsArray = $modAct->verActividad($IDACTIVIDAD);
     $tsArray2 = $usuarios->Usu();
@@ -236,7 +237,7 @@ class mvc_controller {
       $pagina = $this->replace_content('/\#CONTENIDO\#/ms' ,$datos, $pagina); 
     }
     else{
-      $pagina = $this->replace_content('/\#CONTENIDO\#/ms' ,'<h1>error al mostrar el proyecto</h1>' , $pagina);
+      $pagina = $this->replace_content('/\#CONTENIDO\#/ms' ,'<h1>error al mostrar la actividad</h1>' , $pagina);
     }
     $this->view_page($pagina);
  }
@@ -399,7 +400,7 @@ function aUsu($Bdatos){
   else{
    echo'<script type="text/javascript">
      alert("Usuario agregado con exito");
-     window.location.href="index.php?action=vaUsu";
+     window.location.href="index.php?action=visUsu";
      </script>';     
   }
 }
@@ -407,29 +408,25 @@ function aUsu($Bdatos){
 function FmodProy($Bdatos,$Datos1,$Datos2){
 
  $FmodProy=new Proyectos();
-  if($FmodProy->MODPROYDATOS($Bdatos,$Datos1,$Datos2)==false){
-    
+  if($FmodProy->MODPROYDATOS($Bdatos,$Datos1,$Datos2)==true){
+    echo'<script type="text/javascript">
+    alert("La actividad se ha modificado de manera exitosa");
+    window.location.href="index.php?action=visualizarProyecto&idProy='.($Bdatos['id']).'";
+    </script>';  
   }
-  else{
-       
-  }
+
 }
 
 function FmodAct($Bdatos,$Datos1){
  $FmodAct=new actividades();
-  if($FmodAct->MODACTDATOS($Bdatos,$Datos1)==false){
-
-       echo'<script type="text/javascript">
-     alert("Al menos un usuario duplicado o no existente");
+  if($FmodAct->MODACTDATOS($Bdatos,$Datos1)==true){
+   
+    echo'<script type="text/javascript">
+     alert("La actividad se ha modificado de manera exitosa");
      window.location.href="index.php?action=verActividad&idAct='.($Bdatos['id']).'";
      </script>'; 
   }
-  else{
-        echo'<script type="text/javascript">
-     alert("Actividad actualizada con éxito");
-     window.location.href="index.php";
-     </script>'; 
-  }
+
 }
 
 //
