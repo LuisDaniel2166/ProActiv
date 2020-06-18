@@ -9,15 +9,15 @@
                         <li class="child-menu"><a href="#">Usuarios<i class="fa fa-angle-right"></i></a>
                             <div class="sub-menu-wrapper">
                                 <ul class="sub-menu center-content">
-                                    <li><a href="Mi Perfil.html">Mi Perfil</a></li>
+                                <li><a href="index.php?action=miperfil">Mi Perfil</a></li>
                                 </ul>
                             </div>
                         </li>
                         <li class="child-menu"><a href="#">Proyectos<i class="fa fa-angle-right"></i></a>
                             <div class="sub-menu-wrapper">
                                 <ul class="sub-menu center-content">
-                                    <li><a href="crear actividad.html">Agregar Proyecto</a></li>
-                                    <li><a href="mis_actividades.html">Mis Proyectos</a></li>
+                                    <li><a href="index.php?action=crearProyecto">Agregar Proyecto</a></li>
+                                    <li><a href="index.php?">Mis Proyectos</a></li>
                                 </ul>
                             </div>
                         </li>
