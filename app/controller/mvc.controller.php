@@ -410,7 +410,7 @@ function FmodProy($Bdatos,$Datos1,$Datos2){
  $FmodProy=new Proyectos();
   if($FmodProy->MODPROYDATOS($Bdatos,$Datos1,$Datos2)==true){
     echo'<script type="text/javascript">
-    alert("La actividad se ha modificado de manera exitosa");
+    alert("El proyecto se ha modificado de manera exitosa");
     window.location.href="index.php?action=visualizarProyecto&idProy='.($Bdatos['id']).'";
     </script>';  
   }

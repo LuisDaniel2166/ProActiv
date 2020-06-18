@@ -27,7 +27,7 @@
 		<!--Estado de la actividad-->
 		<h3>Estado de la Actividad:</h3>
 		<p style="color:#2C2C2C">
-			<?php if($tsArray3['ESTADO']=='A'){
+			<?php if($tsArray['ESTADO']=='A'){
 					echo "Activo";
 				}
 				else{
