@@ -139,7 +139,8 @@ else if($_GET['action']=='modPro'){
          'Proyecto' => $_POST['nombre_Pro'],
          'Desc' => $_POST['Desc_Pro'],
          'fechaIni' => $_POST['trip-start'],
-         'fechaFin' => $_POST['trip-end']                 
+         'fechaFin' => $_POST['trip-end'],
+         'estado' => $_POST['estado']                 
           
       ];
     echo $mvc->FmodProy($datos1,$ArrayID,$ArrayRol);
@@ -155,7 +156,9 @@ else if($_GET['action']=='modPro'){
          'Actividad' => $_POST['nombre_Act'],
          'Desc' => $_POST['Desc_Act'],
          'fechaIni' => $_POST['trip-start'],
-         'fechaFin' => $_POST['trip-end']                 
+         'fechaFin' => $_POST['trip-end'],
+         'estado' => $_POST['estado']
+
           
       ];
     echo $mvc->FmodAct($datos1,$ArrayID);

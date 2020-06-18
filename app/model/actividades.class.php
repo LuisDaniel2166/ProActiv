@@ -110,7 +110,7 @@ class actividades extends database {
             
 
             }
-        $query = 'UPDATE actividad SET NOMACTIVIDAD = "'.$datos['Actividad'].'", DESCACT = "'.$datos['Desc'].'", FECINICIO = "'.$datos['fechaIni'].'", FECFIN = "'.$datos['fechaFin'].'" WHERE actividad.IDACTIVIDAD = '.$datos['id'];
+        $query = 'UPDATE actividad SET NOMACTIVIDAD = "'.$datos['Actividad'].'", DESCACT = "'.$datos['Desc'].'", FECINICIO = "'.$datos['fechaIni'].'", FECFIN = "'.$datos['fechaFin'].'", ESTADO = "'.$datos['estado'].'" WHERE actividad.IDACTIVIDAD = '.$datos['id'];
 		mysqli_query($link,$query); 
 		return true; 
       	
@@ -132,7 +132,7 @@ class actividades extends database {
 
 	function getInfAct($idactv) {
 		$link = $this -> conectar();
-		$query = "SELECT IDACTIVIDAD,NOMACTIVIDAD,FECINICIO,FECFIN,NOMPROY,a.ESTADO,DESCACT FROM actividad a inner join proyecto p on (a.IDPROYECTO=p.IDPROYECTO) WHERE IDACTIVIDAD=" . $idactv;
+		$query = "SELECT * FROM actividad WHERE IDACTIVIDAD=" . $idactv;
 		$result = mysqli_query($link, $query);	
 		$tsArray = mysqli_fetch_assoc($result);
 		return $tsArray;

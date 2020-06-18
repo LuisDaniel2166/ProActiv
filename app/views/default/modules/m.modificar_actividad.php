@@ -165,6 +165,11 @@
                             <p><input type="date" id="start" name="trip-start" value="<?php echo $tsArray['FECINICIO']?>" min="2020-06-18" max="2021-12-31"></p>
                             <h4>Fecha de finalización:</h4>
                             <p><input type="date" id="start" name="trip-end" value="<?php echo $tsArray['FECFIN']?>" min="2020-06-19" max="2021-12-31"></p>
+                            <h4>Estado de la actividad:</h4>
+                            <p><select name="estado" autofocus>
+                                <option value="A" selected>Activo</option>
+                                <option value="F">Finalizado</option>
+                             </select></p>
                             <p><button type="submit" class="btn btn-default" role="link" >Guardar Cambios</button></p>
                             </form>
                              <p><a href="index.php?action=  Proyecto&idProy=<?php echo $tsArray['IDPROYECTO']?>"><button type="submit" name="editar" class="btn btn-default" role="link" onclick="'m.modificar_proyecto.php" >Cancelar</button></a></p>  
