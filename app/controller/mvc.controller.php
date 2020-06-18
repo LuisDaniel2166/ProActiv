@@ -118,7 +118,7 @@ class mvc_controller {
     $tsArray = $visProy->getInfPro($idProyecto);
     $tsArray2 = $visProy->getIntPro($idProyecto);
     $tsArray3 = $visProy->getActInf($idProyecto);
-    if($tsArray!='' ){
+    if($tsArray!=''){
       include 'app/views/default/modules/m.visualizar_proyecto.php'; 
       $table = ob_get_clean();
       $pagina = $this->replace_content('/\#CONTENIDO\#/ms' ,$table, $pagina);
@@ -362,34 +362,29 @@ function aUsu($Bdatos){
 }
 
 function FmodProy($Bdatos,$Datos1,$Datos2){
+
  $FmodProy=new Proyectos();
   if($FmodProy->MODPROYDATOS($Bdatos,$Datos1,$Datos2)==false){
-    echo'<script type="text/javascript">
-     alert("Error al actualizar el proyecto");
-     window.location.href="index.php?";
-     </script>';   
+    
   }
   else{
-   echo'<script type="text/javascript">
-     alert("El proyecto se ha ejecutado correctamente");
-     window.location.href="index.php?";
-     </script>';     
+       
   }
 }
 
 function FmodAct($Bdatos,$Datos1){
  $FmodAct=new actividades();
   if($FmodAct->MODACTDATOS($Bdatos,$Datos1)==false){
-    echo'<script type="text/javascript">
-     alert("Error al modificar la actividad");
-     window.location.href="index.php?";
-     </script>';   
+       echo'<script type="text/javascript">
+     alert("El usuario ya existe intente con uno nuevo");
+     window.location.href="index.php";
+     </script>'; 
   }
   else{
-   echo'<script type="text/javascript">
-     alert("La actividad se ha modificado con éxito");
-     window.location.href="index.php?";
-     </script>';     
+        echo'<script type="text/javascript">
+     alert("El usuario ya existe intente con uno nuevo");
+     window.location.href="index.php";
+     </script>'; 
   }
 }
 

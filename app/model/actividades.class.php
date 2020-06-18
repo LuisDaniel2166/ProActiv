@@ -95,33 +95,46 @@ class actividades extends database {
         mysqli_close($link);
 	}
 	function MODACTDATOS($datos,$datos1){
-        //Abrimos la conexion
         $link = $this->conectar();
         $tamaño = count($datos1);
+
+
         //Guardamos el query a ejecutar
             foreach ($datos1 as $key => $data) {
-                $query2 = 'select * from usuario_actividad where IDACTIVIDAD ='.$datos['id'].' &&  IDUSUARIO='.$data;
-                
-                $result = mysqli_query($link,$query2); 
+                $query2 = 'select * from usuario_actividad where IDACTIVIDAD ='.$datos['id'].' and  IDUSUARIO='.$data; 
+                $result = mysqli_query($link,$query2);
+                echo $query2; 
+                var_dump($data);
+
                 if(mysqli_num_rows($result)>=1){
-                return false;
+                
+                }else{
+			       
+			        $query3 = 'INSERT INTO usuario_actividad (IDUSUARIO, IDACTIVIDAD) VALUES ('.$data.', '.$datos['id'].')';
+			        mysqli_query($link,$query3);      
+				        
+				                			
                 }
             
 
             }
+        $query = 'UPDATE actividad SET NOMACTIVIDAD = "'.$datos['Actividad'].'", DESCACT = "'.$datos['Desc'].'", FECINICIO = "'.$datos['fechaIni'].'", FECFIN = "'.$datos['fechaFin'].'" WHERE actividad.IDACTIVIDAD = '.$datos['id'];
+        echo $query;
+      	
 
-
-        $query = 'UPDATE actividad SET NOMACTIVIDAD = "'.$datos['Actividad'].'", DESCPROY = "'.$datos['Desc'].'", FECINICIO = "'.$datos['fechaIni'].'", FECFIN = "'.$datos['fechaFin'].'" WHERE actividad.IDACTIVIDAD = '.$datos['id'];
         //Ejecutamos el query
         
-        mysqli_query($link,$query);
-        for ($i=0; $i < $tamaño ; $i++) { 
-        $query3 = 'INSERT INTO usuario_actividad (IDUSUARIO, IDPROYECTO) VALUES ("'.$datos1[$i].'", "'.$datos['id'].'")';
-         mysqli_query($link,$query3);       
-        }
-        return true;
+     //   mysqli_query($link,$query);
+     //   for ($i=0; $i < $tamaño ; $i++) { 
+     //   $query3 = 'INSERT INTO usuario_actividad (IDUSUARIO, IDACTIVIDAD) VALUES ('.$datos1[$i].', '.$datos['id'].')';
+     //   echo $query3;
+     //    mysqli_query($link,$query3);       
+     //   }
+     //   return true;
         mysqli_close($link);
+    
     }
+    
 
 
 	function getInfAct($idactv) {

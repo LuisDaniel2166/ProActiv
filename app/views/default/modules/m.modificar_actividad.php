@@ -19,14 +19,14 @@
                            <input type="text" name="Desc_Act" class="form-control" placeholder="Descripcion de la actividad" value="<?php echo $tsArray['DESCACT']?>">
                             
                              
-                             
+                            <form method="POST">
                             <h3 = align="center" >Seleccionar integrantes:</h3>
 
                             
 
                             <div style="text-align:center;">
                                 <h5>Elige a los miembros participantes</h5>
-                            <select name="Usuarios" id='usuarios' onChange="TextoUsuario(this);" autofocus>
+                            <select name="Usuarios" id='usuarios' autofocus>
                             
                             <?php foreach($tsArray2 as $data): ?>
                             <option value="<?php echo $data['IDUSUARIO'];?>"><?php echo ($data['NOMUSUARIO'].' '.$data['APEPAT'].' '.$data['APEMAT']);?></option>
@@ -45,7 +45,7 @@
 
                             <!-- Metodo para la creación de la tabla dinámica -->
                             
-                                 <input type="text"name = "TextoID" id="result" size="20"  placeholder ="" value = ""  >
+                                 <input type="text"name = "TextoIDUSU" id="result" size="20"  placeholder ="" value = ""  >
                                  <input type="text"name = "TextoIDActividad" id="idTextoRoles" size="20"  placeholder ="" value = "<?php echo $tsArray['IDACTIVIDAD']?>">
                                   <table>
                                     <tr>
@@ -57,7 +57,7 @@
                                 </table>    
 
                                 <p>
-                                    <button type="button" name ="button" onclick="addItem();">Añadir Miembro</button>
+                                    <button type="button" name ="button" onclick="addItem();TextoUsuario(this);">Añadir Miembro</button>
                                 </p>
 
                                
@@ -166,9 +166,9 @@
                             <p><input type="date" id="start" name="trip-start" value="<?php echo $tsArray['FECINICIO']?>" min="2020-06-18" max="2021-12-31"></p>
                             <h4>Fecha de finalización:</h4>
                             <p><input type="date" id="start" name="trip-end" value="<?php echo $tsArray['FECFIN']?>" min="2020-06-19" max="2021-12-31"></p>
-                            <p><button type="submit" class="btn btn-default" role="link" onclick="window.location='mis_actividades.html'">Guardar Cambios</button></p>
-                             </form>
-                             <p><a href="index.php?action=visualizarProyecto&idProy=<?php echo $tsArray['IDPROYECTO']?>">><button type="submit" name="editar" class="btn btn-default" role="link" onclick="'m.modificar_proyecto.php" >Cancelar</button></a></p>  
+                            <p><button type="submit" class="btn btn-default" role="link" >Guardar Cambios</button></p>
+                            </form>
+                             <p><a href="index.php?action=  Proyecto&idProy=<?php echo $tsArray['IDPROYECTO']?>">><button type="submit" name="editar" class="btn btn-default" role="link" onclick="'m.modificar_proyecto.php" >Cancelar</button></a></p>  
 
 
 

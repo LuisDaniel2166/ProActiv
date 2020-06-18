@@ -130,7 +130,7 @@ else if($_GET['action']=='modPro'){
  }
 
  else if($_GET['action']=='modAct'){
-    $Texto_ID = $_POST['TextoID'];
+    $Texto_ID = $_POST['TextoIDUSU'];
     $ArrayID = explode(',', $Texto_ID);
     
      $datos1=[
